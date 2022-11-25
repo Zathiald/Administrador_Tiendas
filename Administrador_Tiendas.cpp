@@ -6,6 +6,7 @@
 #include "Reporte_Venta.h"
 #include "Reporte_Gasto.h"
 #include "Reporte_Pago.h"
+#include "Reporte.h"
 #include <math.h>
 #include <list>
 #include <vector>
@@ -13,29 +14,87 @@
 
 using namespace std;
 
-Venta v;
-Gasto g;
-Pago p;
-Inventario i;
-Reporte_Venta rv;
-Reporte_Gasto rg;
-Reporte_Pago rp;
-void menu();
-void menu_inv();
+Venta venta;
+Gasto gasto;
+Pago pago;
+Inventario inventario;
+Reporte reporte;
+Reporte_Venta reporteventa;
+Reporte_Gasto reportegasto;
+Reporte_Pago reportepago;
+void reportarGen();
+void reportarInv();
+void reportarPago();
+void reportarGasto();
+void reportarVenta();
+void agregar_inv();
+void quitar_inv();
 void menu_ventas();
 void menu_gastos();
 void menu_pagos();
+void menu_inv();
 void menu_rep();
-void print(string list[], int);
+void menu();
 
 
-void print(string list[], int tam)
+void reportarGen()
 {
-    for (int x = 0; x < tam;x++)
-    {
-        cout << "Index: " << x << endl << " Productos: " << list[x] << std::endl;
-    }
-};
+    float pagos = pago.getPagos_agua() + pago.getPagos_empleado() + pago.getPagos_luz();
+    cout << "------REPORTE GENERAL------" << endl;
+    cout << "--------------------------------------" << endl;
+    cout << "------REPORTE TOTAL DINERO EN DIAS------" << endl;
+    int d;
+    cout << "Ingresa el numero de dias a futuro: " << endl;
+    cin >> d;
+    reporteventa.reportar_dias(reporte, d);
+    float venta_d = reporteventa.getreporteVenta_dias();
+    reportegasto.reportar_dias(reporte, d);
+    float gasto_d = reportegasto.getreporteGasto_dias();
+    reportepago.reportar_dias(reporte,pagos/7,d);
+    float pago_d = reportepago.getreportePago_dias();
+    float total_d = venta_d - (gasto_d + pago_d);
+    cout << "Dinero total despues de " << d << " dias a futuro: " << total_d<<endl;
+    cout << "--------------------------------------" << endl;
+    cout << "------REPORTE TOTAL DINERO EN MESES------" << endl;
+    int m;
+    cout << "Ingresa el numero de meses a futuro: " << endl;
+    cin >> m;
+    reporteventa.reportar_mes(reporte, m);
+    float venta_m = reporteventa.getreporteVenta_mes();
+    reportegasto.reportar_mes(reporte, m);
+    float gasto_m = reportegasto.getreporteGasto_mes();
+    reportepago.reportar_mes(reporte,pagos*4, m);
+    float pago_m = reportepago.getreportePago_mes();
+    float total_m = venta_m - (gasto_m + pago_m);
+    cout << "Dinero total despues de " << m << " meses a futuro: " << total_m << endl;
+    cout << "--------------------------------------" << endl;
+    cout << "------REPORTE TOTAL DINERO EN ANIOS------" << endl;
+    int a;
+    cout << "Ingresa el numero de anios a futuro: " << endl;
+    cin >> a;
+    reporteventa.reportar_anual(reporte, d);
+    float venta_a=reporteventa.getreporteVenta_anual();
+    reportegasto.reportar_anual(reporte, d);
+    float gasto_a = reportegasto.getreporteGasto_anual();
+    reportepago.reportar_anual(reporte, pagos*52, d);
+    float pago_a = reportepago.getreportePago_anual();
+    float total_a = venta_a - (gasto_a + pago_a);
+    cout << "Dinero total despues de " << a << " anios a futuro: " << total_a << endl;
+    cout << "--------------------------------------" << endl;
+    cout << "------INVENTARIO DE FRUTAS------";
+    inventario.printfruta();
+    cout << "--------------------------------------" << endl;
+    cout << "------INVENTARIO DE VEGETALES------";
+    inventario.printvegetal();
+    cout << "--------------------------------------" << endl;
+    cout << "------INVENTARIO DE CARNES------";
+    inventario.printcarne();
+    cout << "--------------------------------------" << endl;
+    cout << "------INVENTARIO DE ELECTRONICOS------";
+    inventario.printelectro();
+    cout << "--------------------------------------" << endl;
+    menu_rep();
+}
 
 void reportarInv()
 {
@@ -53,7 +112,7 @@ void reportarInv()
         {
             cout << "Inventario de Frutas" << endl;
             cout << "--------------------------------------" << endl;
-            print(i.inv_Fruta, i.gettam_f());
+            inventario.printfruta();
             cout << "--------------------------------------" << endl;
             reportarInv();
         }
@@ -61,7 +120,7 @@ void reportarInv()
         {
             cout << "Inventario de Vegetales" << endl;
             cout << "--------------------------------------" << endl;
-            print(i.inv_Vegetal, i.gettam_v());
+            inventario.printvegetal();
             cout << "--------------------------------------" << endl;
             reportarInv();
         }
@@ -69,7 +128,7 @@ void reportarInv()
         {
             cout << "Inventario de Carnes" << endl;
             cout << "--------------------------------------" << endl;
-            print(i.inv_Carne, i.gettam_c());
+            inventario.printcarne();
             cout << "--------------------------------------" << endl;
             reportarInv();
         }
@@ -77,7 +136,7 @@ void reportarInv()
         {
             cout << "Inventario de Electronicos" << endl;
             cout << "--------------------------------------" << endl;
-            print(i.inv_Electro, i.gettam_e());
+            inventario.printelectro();
             cout << "--------------------------------------" << endl;
             reportarInv();
         }
@@ -99,7 +158,7 @@ void reportarInv()
 void reportarPago()
 {
     int p_rp;
-    float pagos = p.getPagos_agua() + p.getPagos_empleado() + p.getPagos_luz();
+    float pagos = pago.getPagos_agua() + pago.getPagos_empleado() + pago.getPagos_luz();
     cout << "Que tipo de pago quieres hacer reporte: " << endl;
     cout << "1 - Pago diario" << endl;
     cout << "2 - Pago mensual" << endl;
@@ -109,34 +168,31 @@ void reportarPago()
     {
         if (p_rp == 1)
         {
-            float d;
+            int d;
             cout << "A cuantos dias a futuro quieres ver: " << endl;
             cin >> d;
-            float p_d = rp.prediccion(pagos,d);
-            rp.setreportePago_dias(p_d);
-            cout << "Ventas en " << d << " dias: " << rp.getreportePago_dias();
+            reportepago.reportar_dias(reporte,pagos/7,d);
+            cout << "Pagos en " << d << " dias: " << reportepago.getreportePago_dias()<<endl;
             cout << "--------------------------------------" << endl;
             reportarPago();
         }
         if (p_rp == 2)
         {
-            float m;
+            int m;
             cout << "A cuantos meses a futuro quieres ver: " << endl;
             cin >> m;
-            float p_m = rp.prediccion(pagos,m);
-            rp.setreportePago_mes(p_m);
-            cout << "Ventas en " << m << " meses: " << rp.getreportePago_mes();
+            reportepago.reportar_mes(reporte,pagos*4, m);
+            cout << "Pagos en " << m << " meses: " << reportepago.getreportePago_mes()<<endl;
             cout << "--------------------------------------" << endl;
             reportarPago();
         }
         if (p_rp == 3)
         {
-            float a;
+            int a;
             cout << "A cuantos años a futuro quieres ver: " << endl;
             cin >> a;
-            float p_a =rp.prediccion(pagos,a);
-            rp.setreportePago_anual(p_a);
-            cout << "Ventas en " << a << " años: " << rp.getreportePago_anual();
+            reportepago.reportar_anual(reporte,pagos*52, a);
+            cout << "Pagos en " << a << " años: " << reportepago.getreportePago_anual()<<endl;
             cout << "--------------------------------------" << endl;
             reportarPago();
         }
@@ -168,34 +224,31 @@ void reportarGasto()
     {
         if (g_rp == 1)
         {
-            float d;
+            int d;
             cout << "A cuantos dias a futuro quieres ver: " << endl;
             cin >> d;
-            float g_a = rg.prediccion(g.getGastos_dia(), d);
-            rg.setreporteGasto_dias(g_a);
-            cout << "Gastos en " << d << " dias: " << rg.getreporteGasto_dias();
+            reportegasto.reportar_dias(reporte,d);
+            cout << "Gastos en " << d << " dias: " << reportegasto.getreporteGasto_dias()<<endl;
             cout << "--------------------------------------" << endl;
             reportarGasto();
         }
         if (g_rp == 2)
         {
-            float m;
+            int m;
             cout << "A cuantos meses a futuro quieres ver: " << endl;
             cin >> m;
-            float g_m = rg.prediccion(g.getGastos_mes(), m);
-            rg.setreporteGasto_mes(g_m);
-            cout << "Gastos en " << m << " meses: " << rg.getreporteGasto_mes();
+            reportegasto.reportar_mes(reporte,m);
+            cout << "Gastos en " << m << " meses: " << reportegasto.getreporteGasto_mes()<<endl;
             cout << "--------------------------------------" << endl;
             reportarGasto();
         }
         if (g_rp == 3)
         {
-            float a;
+            int a;
             cout << "A cuantos años a futuro quieres ver: " << endl;
             cin >> a;
-            float g_a = rg.prediccion(g.getGastos_anual(), a);
-            rg.setreporteGasto_anual(g_a);
-            cout << "Gastos en " << a << " anos: " << rg.getreporteGasto_anual(); 
+            reportegasto.reportar_anual(reporte,a);
+            cout << "Gastos en " << a << " anos: " << reportegasto.getreporteGasto_anual()<<endl; 
             cout << "--------------------------------------" << endl;
             reportarGasto();
         }
@@ -214,7 +267,6 @@ void reportarGasto()
     }
 }
 
-
 void reportarVenta()
 {
     int v_rp;
@@ -228,34 +280,31 @@ void reportarVenta()
     {
         if (v_rp == 1)
         {
-            float d;
+            int d;
             cout << "A cuantos dias a futuro quieres ver: " << endl;
             cin >> d;
-            float v_d = rv.prediccion(v.getVentas_dia(), d);
-            rv.setreporteVenta_dias(v_d);
-            cout << "Ventas en " << d << " dias: " << rv.getreporteVenta_dias() << endl;
+            reporteventa.reportar_dias(reporte,d);
+            cout << "Ventas en " << d << " dias: " << reporteventa.getreporteVenta_dias() << endl;
             cout << "--------------------------------------" << endl;
             reportarVenta();
         }
         if (v_rp == 2)
         {
-            float m;
+            int m;
             cout << "A cuantos meses a futuro quieres ver: " << endl;
             cin >> m;
-            float v_m = rv.prediccion(v.getVentas_mes(),m);
-            rv.setreporteVenta_mes(v_m);
-            cout << "Ventas en " << m << " meses: " << rv.getreporteVenta_mes() << endl;
+            reporteventa.reportar_mes(reporte,m);
+            cout << "Ventas en " << m << " meses: " << reporteventa.getreporteVenta_mes() << endl;
             cout << "--------------------------------------" << endl;
             reportarVenta();
         }
         if (v_rp == 3)
         {
-            float a;
+            int a;
             cout << "A cuantos años a futuro quieres ver: " << endl;
             cin >> a;
-            float v_a = rv.prediccion(v.getVentas_anual(), a);
-            rv.setreporteVenta_anual(v_a);
-            cout << "Ventas en " << a << " años: " << rv.getreporteVenta_anual() << endl;
+            reporteventa.reportar_anual(reporte,a);
+            cout << "Ventas en " << a << " años: " << reporteventa.getreporteVenta_anual() << endl;
             cout << "--------------------------------------" << endl;
             reportarVenta();
         }
@@ -288,25 +337,25 @@ void agregar_inv()
     {
         if (op_ag == 1)
         {
-            i.agregarFruta();
+            inventario.agregarFruta();
             cout << "--------------------------------------" << endl;
             menu_inv();
         }
         if (op_ag == 2)
         {
-            i.agregarVegetal();
+            inventario.agregarVegetal();
             cout << "--------------------------------------" << endl;
             menu_inv();
         }
         if (op_ag == 3)
         {
-            i.agregarCarne();
+            inventario.agregarCarne();
             cout << "--------------------------------------" << endl;
             menu_inv();
         }
         if (op_ag == 4)
         {
-            i.agregarElectro();
+            inventario.agregarElectro();
             cout << "--------------------------------------" << endl;
             menu_inv();
         }
@@ -334,25 +383,25 @@ void quitar_inv()
     {
         if (op_q == 1)
         {
-            i.quitarFruta();
+            inventario.quitarFruta();
             cout << "--------------------------------------" << endl;
             menu_inv();
         }
         if (op_q == 2)
         {
-            i.quitarVegetal();
+            inventario.quitarVegetal();
             cout << "--------------------------------------" << endl;
             menu_inv();
         }
         if (op_q == 3)
         {
-            i.quitarCarne();
+            inventario.quitarCarne();
             cout << "--------------------------------------" << endl;
             menu_inv();
         }
         if (op_q == 4)
         {
-            i.quitarElectro();
+            inventario.quitarElectro();
             cout << "--------------------------------------" << endl;
             menu_inv();
         }
@@ -382,7 +431,7 @@ void menu_ventas()
             float v_d;
             cout << "Registra las ventas diarias: " << endl;
             cin >> v_d;
-            v.setVentas_dia(v_d);
+            venta.setVentas_dia(v_d);
             cout << "--------------------------------------" << endl;
             menu_ventas();
         }
@@ -391,7 +440,7 @@ void menu_ventas()
             float v_m;
             cout << "Registra las ventas mensuales: " << endl;
             cin >> v_m;
-            v.setVentas_mes(v_m);
+            venta.setVentas_mes(v_m);
             cout << "--------------------------------------" << endl;
             menu_ventas();
         }
@@ -400,7 +449,7 @@ void menu_ventas()
             float v_a;
             cout << "Registra las ventas anuales: " << endl;
             cin >> v_a;
-            v.setVentas_anual(v_a);
+            venta.setVentas_anual(v_a);
             cout << "--------------------------------------" << endl;
             menu_ventas();
         }
@@ -408,6 +457,7 @@ void menu_ventas()
         {
             cout << "Regresando al menu..." << endl;
             cout << "--------------------------------------" << endl;
+            reporteventa.agregar_venta(venta);
             menu();
         }
     } while (op_v == 1 || op_v == 2 || op_v == 3 || op_v == 4);
@@ -435,7 +485,7 @@ void menu_gastos()
             float g_d;
             cout << "Registra los gastos diarios: " << endl;
             cin >> g_d;
-            g.setGastos_dia(g_d);
+            gasto.setGastos_dia(g_d);
             cout << "--------------------------------------" << endl;
             menu_gastos();
         }
@@ -444,7 +494,7 @@ void menu_gastos()
             float g_m;
             cout << "Registra los gastos mensuales: " << endl;
             cin >> g_m;
-            g.setGastos_mes(g_m);
+            gasto.setGastos_mes(g_m);
             cout << "--------------------------------------" << endl;
             menu_gastos();
         }
@@ -453,7 +503,7 @@ void menu_gastos()
             float g_a;
             cout << "Registra los gastos anuales: " << endl;
             cin >> g_a;
-            g.setGastos_anual(g_a);
+            gasto.setGastos_anual(g_a);
             cout << "--------------------------------------" << endl;
             menu_gastos();
         }
@@ -461,6 +511,7 @@ void menu_gastos()
         {
             cout << "Regresando al menu..." << endl;
             cout << "--------------------------------------" << endl;
+            reportegasto.agregar_gasto(gasto);
             menu();
 
         }
@@ -472,7 +523,6 @@ void menu_gastos()
         menu_gastos();
     }
 }
-
 
 void menu_pagos()
 {
@@ -490,7 +540,7 @@ void menu_pagos()
             float p_e;
             cout << "Registra los pagos a empleados (por semana): " << endl;
             cin >> p_e;
-            p.setPagos_empleado(p_e);
+            pago.setPagos_empleado(p_e);
             cout << "--------------------------------------" << endl;
             menu_pagos();
         }
@@ -499,7 +549,7 @@ void menu_pagos()
             float p_l;
             cout << "Registra los pagos de luz (por semana): " << endl;
             cin >> p_l;
-            p.setPagos_luz(p_l);
+            pago.setPagos_luz(p_l);
             cout << "--------------------------------------" << endl;
             menu_pagos();
         }
@@ -508,7 +558,7 @@ void menu_pagos()
             float p_a;
             cout << "Registra los pagos de agua (por semana): " << endl;
             cin >> p_a;
-            p.setPagos_agua(p_a);
+            pago.setPagos_agua(p_a);
             cout << "--------------------------------------" << endl;
             menu_pagos();
         }
@@ -516,6 +566,7 @@ void menu_pagos()
         {
             cout << "Regresando al menu..." << endl;
             cout << "--------------------------------------" << endl;
+            reportepago.agregar_pago(pago);
             menu();
         }
     } while (op_p == 1 || op_p == 2 || op_p == 3 || op_p == 4);
@@ -572,7 +623,8 @@ void menu_rep()
     cout << ("2 - Reporte Gastos") << endl;
     cout << ("3 - Reporte Pagos") << endl;
     cout << ("4 - Reporte Inventario") << endl;
-    cout << ("5 - Regresar") << endl;
+    cout << ("5 - Reporte General") << endl;
+    cout << ("6 - Regresar") << endl;
     cin >> op_rep;
     do
     {
@@ -597,15 +649,19 @@ void menu_rep()
             reportarInv();
             cout << "--------------------------------------" << endl;
         }
-
         if (op_rep == 5)
+        {
+            reportarGen();
+            cout << "--------------------------------------" << endl;
+        }
+        if (op_rep == 6)
         {
             cout << "Regresando al menu..." << endl;
             cout << "--------------------------------------" << endl;
             menu();
         }
-    } while (op_rep == 1 || op_rep == 2 || op_rep == 3 || op_rep == 4 || op_rep == 5);
-    if (op_rep != 1 && op_rep != 2 && op_rep != 3 && op_rep != 4 && op_rep != 5)
+    } while (op_rep == 1 || op_rep == 2 || op_rep == 3 || op_rep == 4 || op_rep == 5 || op_rep == 6);
+    if (op_rep != 1 && op_rep != 2 && op_rep != 3 && op_rep != 4 && op_rep != 5 && op_rep!=6)
     {
         cout << "Esa no es una opcion valida, escoge bien" << endl;
         cout << "--------------------------------------" << endl;

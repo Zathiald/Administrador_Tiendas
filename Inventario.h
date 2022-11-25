@@ -1,9 +1,10 @@
 #include <iostream>
 #include <list>
+#include <string>
+#include <stdio.h>
+#include <stdlib.h>
 
 using namespace std;
-
-
 
 class Inventario
 {
@@ -20,22 +21,64 @@ public:
     void settam_v(int);
     void settam_c(int);
     void settam_e(int);
+    void printfruta();
+    void printvegetal();
+    void printcarne();
+    void printelectro();
     int gettam_f();
     int gettam_v();
     int gettam_c();
     int gettam_e();
-    string inv_Fruta[50];
-    string inv_Vegetal[50];
-    string inv_Carne[50];
-    string inv_Electro[50];
     
-
 private:
     int tam_f = 0;
     int tam_v = 0;
     int tam_c = 0;
     int tam_e = 0;
+    string inv_Fruta[50];
+    string inv_Vegetal[50];
+    string inv_Carne[50];
+    string inv_Electro[50];
 };
+
+
+void Inventario::printfruta()
+{
+    for (int x = 0; x < tam_f; x++)
+    {
+        cout << "Index: " << x << endl;
+        cout << " Productos: " << inv_Fruta[x] << endl;
+    };
+};
+
+void Inventario::printvegetal()
+{
+    for (int x = 0; x < tam_v; x++)
+    {
+        cout << "Index: " << x << endl;
+        cout << " Productos: " << inv_Vegetal[x] << endl;
+    };
+};
+
+void Inventario::printcarne()
+{
+    for (int x = 0; x < tam_c; x++)
+    {
+        cout << "Index: " << x << endl;
+        cout << " Productos: " << inv_Carne[x] << endl;
+    };
+};
+
+void Inventario::printelectro()
+{
+    for (int x = 0; x < tam_e; x++)
+    {
+        cout << "Index: " << x << endl;
+        cout << " Productos: " << inv_Electro[x] << endl;
+    };
+};
+
+
 
 void Inventario::settam_f(int t)
 {
@@ -82,7 +125,6 @@ void Inventario::agregarFruta()
     {
         cout << "Que fruta quieres agregar a la lista: ";
         cin >> fruta;
-        cout << "mi fruta es: " << fruta;
         inv_Fruta[gettam_f()] = fruta;
         int t = gettam_f() + 1;
         settam_f(t);
@@ -104,7 +146,10 @@ void Inventario::quitarFruta()
     cout << "Que fruta quieres quitar de la lista,escoge su numero: ";
     cin >> fruta_x;
     inv_Fruta[fruta_x] = {};
-    cout << "--------------------------------------" << endl;}
+    int t = gettam_f() - 1;
+    settam_f(t);
+    cout << "--------------------------------------" << endl;
+}
 
 void Inventario::agregarVegetal()
 {
@@ -135,6 +180,8 @@ void Inventario::quitarVegetal()
     cout << "Que vegetal quieres quitar de la lista,escoge su numero: ";
     cin >> vegetal_x;
     inv_Vegetal[vegetal_x] = {};
+    int t = gettam_v() - 1;
+    settam_v(t);
     cout << "--------------------------------------" << endl;
 }
 
@@ -167,6 +214,8 @@ void Inventario::quitarCarne()
     cout << "Que carne quieres quitar de la lista,escoge su numero: ";
     cin >> carne_x;
     inv_Carne[carne_x] = {};
+    int t = gettam_c() - 1;
+    settam_c(t);
     cout << "--------------------------------------" << endl;
 }
 
@@ -199,6 +248,8 @@ void Inventario::quitarElectro()
     cout << "Que electronico quieres quitar de la lista,escoge su numero: ";
     cin >> electro_x;
     inv_Electro[electro_x] = {};
+    int t = gettam_e() - 1;
+    settam_e(t);
     cout << "--------------------------------------" << endl;
 }
 

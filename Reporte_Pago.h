@@ -1,8 +1,8 @@
 #include <iostream>
-
+#include "Reporte.h"
 using namespace std;
 
-class Reporte_Pago : private Pago
+class Reporte_Pago : public Reporte
 {
 public:
 	float getreportePago_dias();
@@ -11,12 +11,16 @@ public:
 	void setreportePago_mes(float);
 	float getreportePago_anual();
 	void setreportePago_anual(float);
-	float prediccion(float,float);
+	void reportar_dias(Reporte,float,int);
+	void reportar_mes(Reporte,float,int);
+	void reportar_anual(Reporte,float,int);
+	void agregar_pago(Pago);
 
 private:
 	float reportePago_dias;
 	float reportePago_mes;
 	float reportePago_anual;
+	Pago pago;
 };
 
 float Reporte_Pago::getreportePago_dias()
@@ -49,7 +53,25 @@ void Reporte_Pago::setreportePago_anual(float v)
 	reportePago_anual = v;
 };
 
-float Reporte_Pago::prediccion(float p, float t)
+void Reporte_Pago::reportar_dias(Reporte reporte,float p,int d)
 {
-	return p * t;
-}
+	float p_d = reporte.prediccion(p, d);
+	setreportePago_dias(p_d);
+};
+
+void Reporte_Pago::reportar_mes(Reporte reporte,float p,int m)
+{
+	float p_m = reporte.prediccion(p, m);
+	setreportePago_mes(p_m);
+};
+
+void Reporte_Pago::reportar_anual(Reporte reporte,float p,int a)
+{
+	float p_a = reporte.prediccion(p, a);
+	setreportePago_anual(p_a);
+};
+
+void Reporte_Pago::agregar_pago(Pago pag)
+{
+	pago = pag;
+};

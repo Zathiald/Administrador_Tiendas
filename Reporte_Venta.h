@@ -1,8 +1,8 @@
 #include <iostream>
-
+#include "Reporte.h"
 using namespace std;
 
-class Reporte_Venta : private Venta
+class Reporte_Venta : public Reporte
 {
 public:
     float getreporteVenta_dias();
@@ -11,12 +11,16 @@ public:
     void setreporteVenta_mes(float);
     float getreporteVenta_anual();
     void setreporteVenta_anual(float);
-    float prediccion(float, float);
+    void reportar_dias(Reporte,int);
+    void reportar_mes(Reporte,int);
+    void reportar_anual(Reporte,int);
+    void agregar_venta(Venta);
 
 private:
     float reporteVenta_dias;
     float reporteVenta_mes;
     float reporteVenta_anual;
+    Venta venta;
 };
 
 float Reporte_Venta::getreporteVenta_dias()
@@ -49,7 +53,26 @@ void Reporte_Venta::setreporteVenta_anual(float v)
     reporteVenta_anual = v;
 };
 
-float Reporte_Venta::prediccion(float v, float t) 
+void Reporte_Venta::reportar_dias(Reporte reporte,int d)
 {
-    return v * t;
-}
+    float v_d = reporte.prediccion(venta.getVentas_dia(), d);
+    setreporteVenta_dias(v_d);
+};
+
+void Reporte_Venta::reportar_mes(Reporte reporte,int m)
+{
+    float v_m = reporte.prediccion(venta.getVentas_mes(), m);
+    setreporteVenta_mes(v_m);
+};
+
+void Reporte_Venta::reportar_anual(Reporte reporte,int a)
+{
+    float v_a = reporte.prediccion(venta.getVentas_dia(), a);
+    setreporteVenta_anual(v_a);
+};
+
+void Reporte_Venta::agregar_venta(Venta vent)
+{
+    venta = vent;
+};
+
