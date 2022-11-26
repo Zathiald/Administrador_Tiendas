@@ -1,3 +1,5 @@
+//Código principal que va a utilizar todas las clases establecidas para generar los reportes que el usuario pida
+//Creación: 10/11/22
 #include <iostream>
 #include "Venta.h"
 #include "Gasto.h"
@@ -35,7 +37,10 @@ void menuInv();
 void menuRep();
 void menu();
 
-
+//Función: La función tiene de por fin el dar un reporte general del dinero total en dias, meses y futuro
+//también se muestran todas las listas de los diferentes inventarios
+//Parametros: No se tienen parametros en si, pero si se usan funciones de cada una de las clases creadas, también se tienen inputs para dias,meses y años, para hacer la predicción
+//Retorno: Al ser void no hay retorno explicito, pero lo que se da de regreso es un reporte general sobra cada una de las variables
 void reportarGen()
 {
     float pagos = pago.getPagosAgua() + pago.getPagosEmpleado() + pago.getPagosLuz();
@@ -50,10 +55,10 @@ void reportarGen()
     reportegasto.reportarDias(reporte, dia);
     float gastoDia = reportegasto.getReporteGastoDias();
     float pagosDia = pagos / 7;
-    reportepago.reportarDias(reporte,pagosDia,dia);
+    reportepago.reportarDias(reporte, pagosDia, dia);
     float pagoDia = reportepago.getReportePagoDias();
     float totalDia = ventaDia - (gastoDia + pagoDia);
-    cout << "Dinero total despues de " << dia << " dias a futuro: " << totalDia<<endl;
+    cout << "Dinero total despues de " << dia << " dias a futuro: " << totalDia << endl;
     cout << "--------------------------------------" << endl;
     cout << "------REPORTE TOTAL DINERO EN MESES------" << endl;
     int mes;
@@ -64,7 +69,7 @@ void reportarGen()
     reportegasto.reportarMes(reporte, mes);
     float gastoMes = reportegasto.getReporteGastoMes();
     float pagosMes = pagos * 4;
-    reportepago.reportarMes(reporte,pagosMes, mes);
+    reportepago.reportarMes(reporte, pagosMes, mes);
     float pagoMes = reportepago.getReportePagoMes();
     float totalMes = ventaMes - (gastoMes + pagoMes);
     cout << "Dinero total despues de " << mes << " meses a futuro: " << totalMes << endl;
@@ -74,7 +79,7 @@ void reportarGen()
     cout << "Ingresa el numero de anios a futuro: " << endl;
     cin >> anio;
     reporteventa.reportarAnual(reporte, anio);
-    float ventaAnual=reporteventa.getReporteVentaAnual();
+    float ventaAnual = reporteventa.getReporteVentaAnual();
     reportegasto.reportarAnual(reporte, anio);
     float gastoAnual = reportegasto.getReporteGastoAnual();
     float pagosAnual = pagos * 52;
@@ -86,18 +91,21 @@ void reportarGen()
     cout << "------INVENTARIO DE FRUTAS------" << endl;
     inventario.printFruta();
     cout << "--------------------------------------" << endl;
-    cout << "------INVENTARIO DE VEGETALES------"<<endl;
+    cout << "------INVENTARIO DE VEGETALES------" << endl;
     inventario.printVegetal();
     cout << "--------------------------------------" << endl;
-    cout << "------INVENTARIO DE CARNES------"<<endl;
+    cout << "------INVENTARIO DE CARNES------" << endl;
     inventario.printCarne();
     cout << "--------------------------------------" << endl;
-    cout << "------INVENTARIO DE ELECTRONICOS------"<<endl;
+    cout << "------INVENTARIO DE ELECTRONICOS------" << endl;
     inventario.printElectro();
     cout << "--------------------------------------" << endl;
     menuRep();
-}
+};
 
+//Función: La función tiene de por fin el dar un reporte del inventario que escoga el usuario
+//Parametros: No se tienen parametros en si, pero si se usan funciones de la clase de Inventario y un integer para decidir que inventario mostrar
+//Retorno: Al ser void no hay retorno explicito, lo que se hace es llamar a otras funciones y mostrar variables
 void reportarInv()
 {
     int inv_op;
@@ -155,8 +163,12 @@ void reportarInv()
         cout << "--------------------------------------" << endl;
         reportarInv();
     }
-}
+};
 
+//Función: La función tiene de por fin el dar un reporte de pago, dependiendo de la que escoga el usuario
+//Parametros: No se tienen parametros en si, pero si se usan funciones de la clase de Reporte de Pago
+//,también se tienen integers para definir que periodo de tiempo analizar y a cuanto tiempo a futuro y un float de los diferentes tipos de pagos sumados, la cual se altera segun el periodo de tiempo que se quiere ver
+//Retorno: Al ser void no hay retorno explicito, lo que se hace es llamar a otras funciones y mostrar variables
 void reportarPago()
 {
     int opcionGasto;
@@ -173,8 +185,8 @@ void reportarPago()
             int dia;
             cout << "A cuantos dias a futuro quieres ver: " << endl;
             cin >> dia;
-            reportepago.reportarDias(reporte,pagos/7,dia);
-            cout << "Pagos en " << dia << " dias: " << reportepago.getReportePagoDias()<<endl;
+            reportepago.reportarDias(reporte, pagos / 7, dia);
+            cout << "Pagos en " << dia << " dias: " << reportepago.getReportePagoDias() << endl;
             cout << "--------------------------------------" << endl;
             reportarPago();
         }
@@ -183,8 +195,8 @@ void reportarPago()
             int mes;
             cout << "A cuantos meses a futuro quieres ver: " << endl;
             cin >> mes;
-            reportepago.reportarMes(reporte,pagos*4, mes);
-            cout << "Pagos en " << mes << " meses: " << reportepago.getReportePagoMes()<<endl;
+            reportepago.reportarMes(reporte, pagos * 4, mes);
+            cout << "Pagos en " << mes << " meses: " << reportepago.getReportePagoMes() << endl;
             cout << "--------------------------------------" << endl;
             reportarPago();
         }
@@ -193,8 +205,8 @@ void reportarPago()
             int anio;
             cout << "A cuantos años a futuro quieres ver: " << endl;
             cin >> anio;
-            reportepago.reportarAnual(reporte,pagos*52, anio);
-            cout << "Pagos en " << anio << " años: " << reportepago.getReportePagoAnual()<<endl;
+            reportepago.reportarAnual(reporte, pagos * 52, anio);
+            cout << "Pagos en " << anio << " años: " << reportepago.getReportePagoAnual() << endl;
             cout << "--------------------------------------" << endl;
             reportarPago();
         }
@@ -211,8 +223,11 @@ void reportarPago()
         cout << "--------------------------------------" << endl;
         reportarPago();
     }
-}
+};
 
+//Función: La función tiene de por fin el dar un reporte de gasto, dependiendo de la que escoga el usuario
+//Parametros: No se tienen parametros en si, pero si se usan funciones de la clase de Reporte de Gasto, también se tienen integers para definir que periodo de tiempo analizar y a cuanto tiempo a futuro
+//Retorno: Al ser void no hay retorno explicito, lo que se hace es llamar a otras funciones y mostrar variables
 void reportarGasto()
 {
     int opcionGasto;
@@ -230,7 +245,7 @@ void reportarGasto()
             cout << "A cuantos dias a futuro quieres ver: " << endl;
             cin >> dia;
             reportegasto.reportarDias(reporte, dia);
-            cout << "Gastos en " << dia << " dias: " << reportegasto.getReporteGastoDias()<<endl;
+            cout << "Gastos en " << dia << " dias: " << reportegasto.getReporteGastoDias() << endl;
             cout << "--------------------------------------" << endl;
             reportarGasto();
         }
@@ -239,8 +254,8 @@ void reportarGasto()
             int mes;
             cout << "A cuantos meses a futuro quieres ver: " << endl;
             cin >> mes;
-            reportegasto.reportarMes(reporte,mes);
-            cout << "Gastos en " << mes << " meses: " << reportegasto.getReporteGastoMes()<<endl;
+            reportegasto.reportarMes(reporte, mes);
+            cout << "Gastos en " << mes << " meses: " << reportegasto.getReporteGastoMes() << endl;
             cout << "--------------------------------------" << endl;
             reportarGasto();
         }
@@ -249,8 +264,8 @@ void reportarGasto()
             int anio;
             cout << "A cuantos años a futuro quieres ver: " << endl;
             cin >> anio;
-            reportegasto.reportarAnual(reporte,anio);
-            cout << "Gastos en " << anio << " anos: " << reportegasto.getReporteGastoAnual()<<endl; 
+            reportegasto.reportarAnual(reporte, anio);
+            cout << "Gastos en " << anio << " anos: " << reportegasto.getReporteGastoAnual() << endl;
             cout << "--------------------------------------" << endl;
             reportarGasto();
         }
@@ -267,8 +282,11 @@ void reportarGasto()
         cout << "--------------------------------------" << endl;
         reportarGasto();
     }
-}
+};
 
+//Función: La función tiene de por fin el dar un reporte de venta, dependiendo de la que escoga el usuario
+//Parametros: No se tienen parametros en si, pero si se usan funciones de la clase de Reporte de Venta, también se tienen integers para definir que periodo de tiempo analizar y a cuanto tiempo a futuro
+//Retorno: Al ser void no hay retorno explicito, lo que se hace es llamar a otras funciones y mostrar variables
 void reportarVenta()
 {
     int opcionVenta;
@@ -285,7 +303,7 @@ void reportarVenta()
             int dia;
             cout << "A cuantos dias a futuro quieres ver: " << endl;
             cin >> dia;
-            reporteventa.reportarDias(reporte,dia);
+            reporteventa.reportarDias(reporte, dia);
             cout << "Ventas en " << dia << " dias: " << reporteventa.getReporteVentaDias() << endl;
             cout << "--------------------------------------" << endl;
             reportarVenta();
@@ -295,7 +313,7 @@ void reportarVenta()
             int mes;
             cout << "A cuantos meses a futuro quieres ver: " << endl;
             cin >> mes;
-            reporteventa.reportarMes(reporte,mes);
+            reporteventa.reportarMes(reporte, mes);
             cout << "Ventas en " << mes << " meses: " << reporteventa.getReporteVentaMes() << endl;
             cout << "--------------------------------------" << endl;
             reportarVenta();
@@ -305,7 +323,7 @@ void reportarVenta()
             int anio;
             cout << "A cuantos años a futuro quieres ver: " << endl;
             cin >> anio;
-            reporteventa.reportarAnual(reporte,anio);
+            reporteventa.reportarAnual(reporte, anio);
             cout << "Ventas en " << anio << " años: " << reporteventa.getReporteVentaAnual() << endl;
             cout << "--------------------------------------" << endl;
             reportarVenta();
@@ -323,8 +341,11 @@ void reportarVenta()
         cout << "--------------------------------------" << endl;
         reportarVenta();
     }
-}
+};
 
+//Función: La función tiene de por fin llamar a las funciones de agregar definidas en la clase de Inventario, esto depende de cual escoga el usuario
+//Parametros: No se tienen parametros en si, pero si se usan funciones de la clase de Inventario, también se tienen integers para definir que inventario alterar
+//Retorno: Al ser void no hay retorno explicito, lo que se hace es llamar a otras funciones y alterar variables
 void agregarInv()
 {
     int opcionAgregar;
@@ -369,8 +390,11 @@ void agregarInv()
         cout << "--------------------------------------" << endl;
         agregarInv();
     }
-}
+};
 
+//Función: La función tiene de por fin llamar a las funciones de quitar definidas en la clase de Inventario, esto depende de cual escoga el usuario
+//Parametros: No se tienen parametros en si, pero si se usan funciones de la clase de Inventario, también se tiene un integer para definir que inventario alterar
+//Retorno: Al ser void no hay retorno explicito, lo que se hace es llamar a otras funciones y alterar variables
 void quitarInv()
 {
     int opcionQuitar;
@@ -415,8 +439,11 @@ void quitarInv()
         cout << "--------------------------------------" << endl;
         quitarInv();
     }
-}
+};
 
+//Función: La función tiene de por fin llamar a los setters en la clase de Venta, esto depende de cual escoga el usuario
+//Parametros: No se tienen parametros en si, pero si se usan funciones de la clase de Venta, también se tienen un integer para saber que tipo de venta registrar, incluyendo floats para darles el valor
+//Retorno: Al ser void no hay retorno explicito, lo que se hace es llamar a otras funciones y alterar variables
 void menuVentas()
 {
     int opcionVenta;
@@ -469,8 +496,11 @@ void menuVentas()
         cout << endl;
         menuVentas();
     }
-}
+};
 
+//Función: La función tiene de por fin llamar a los setters en la clase de Gasto, esto depende de cual escoga el usuario
+//Parametros: No se tienen parametros en si, pero si se usan funciones de la clase de Gasto, también se tienen un integer para saber que tipo de venta registrar, incluyendo floats para darles el valor
+//Retorno: Al ser void no hay retorno explicito, lo que se hace es llamar a otras funciones y alterar variables
 void menuGastos()
 {
     int opcionGastos;
@@ -524,8 +554,11 @@ void menuGastos()
         cout << "--------------------------------------" << endl;
         menuGastos();
     }
-}
+};
 
+//Función: La función tiene de por fin llamar a los setters en la clase de Pago, esto depende de cual escoga el usuario
+//Parametros: No se tienen parametros en si, pero si se usan funciones de la clase de Pago, también se tienen un integer para saber que tipo de venta registrar, incluyendo floats para darles el valor
+//Retorno: Al ser void no hay retorno explicito, lo que se hace es llamar a otras funciones y alterar variables
 void menuPagos()
 {
     int opcionPago;
@@ -578,12 +611,15 @@ void menuPagos()
         cout << "--------------------------------------" << endl;
         menuPagos();
     }
-}
+};
 
+//Función: La función tiene de por fin llamar a las funciones de quitar y agregar inventarios, estas definidas en el main, esto para que el usuario navege por el menu
+//Parametros: No se tienen parametros en si, pero si se tiene un integer para saber que opcion del menu se va a realizar
+//Retorno: Al ser void no hay retorno explicito, lo que se hace es llamar a otras funciones 
 void menuInv()
 {
     int opcionInv;
-    cout<<("Selecciona que deseas hacer") << endl;
+    cout << ("Selecciona que deseas hacer") << endl;
     cout << ("1 - Agregar") << endl;
     cout << ("2 - Quitar") << endl;
     cout << ("3 - Regresar") << endl;
@@ -615,8 +651,11 @@ void menuInv()
         cout << "--------------------------------------" << endl;
         menuInv();
     }
-}
+};
 
+//Función: La función tiene de por fin llamar a las funciones de reportes definidas en el main, esto para que el usuario navege por el menu
+//Parametros: No se tienen parametros en si, pero si se tiene un integer para saber que opcion del menu se va a realizar
+//Retorno: Al ser void no hay retorno explicito, lo que se hace es llamar a otras funciones 
 void menuRep()
 {
     int opReporte;
@@ -632,7 +671,7 @@ void menuRep()
     {
         if (opReporte == 1)
         {
-            
+
             reportarVenta();
             cout << "--------------------------------------" << endl;
         }
@@ -663,14 +702,17 @@ void menuRep()
             menu();
         }
     } while (opReporte == 1 || opReporte == 2 || opReporte == 3 || opReporte == 4 || opReporte == 5 || opReporte == 6);
-    if (opReporte != 1 && opReporte != 2 && opReporte != 3 && opReporte != 4 && opReporte != 5 && opReporte !=6)
+    if (opReporte != 1 && opReporte != 2 && opReporte != 3 && opReporte != 4 && opReporte != 5 && opReporte != 6)
     {
         cout << "Esa no es una opcion valida, escoge bien" << endl;
         cout << "--------------------------------------" << endl;
         menuRep();
     }
-}
+};
 
+//Función: La función tiene de por fin llamar a las funciones de menu definidas en el  main, este sera el punto de partida del proyecto y desde aquí el usuario se desplazara entre las opciones
+//Parametros: No se tienen parametros en si, pero si se tiene un integer para saber que opcion del menu se va a realizar
+//Retorno: Al ser void no hay retorno explicito, lo que se hace es llamar a otras funciones 
 void menu()
 {
     int opcionMenu;
@@ -709,21 +751,20 @@ void menu()
             cout << "--------------------------------------" << endl;
             menuRep();
         }
-        if (opcionMenu == 6)
-        {
-            break;
-        }
-    } while (opcionMenu == 1 || opcionMenu == 2 || opcionMenu == 3 || opcionMenu == 4 || opcionMenu == 5 || opcionMenu == 6);
-    if (opcionMenu != 1 && opcionMenu != 2 && opcionMenu != 3 && opcionMenu != 4 && opcionMenu != 5 && opcionMenu != 6)
+    } while (opcionMenu == 1 || opcionMenu == 2 || opcionMenu == 3 || opcionMenu == 4 || opcionMenu == 5);
+    if (opcionMenu != 1 && opcionMenu != 2 && opcionMenu != 3 && opcionMenu != 4 && opcionMenu != 5)
     {
         cout << "Esa no es una opcion valida, escoge bien" << endl;
         cout << "--------------------------------------" << endl;
         menu();
     }
-}
+};
 
+//Función: La función main que llama a la función de menu para iniciar el codigo
+//Parametros: No se tienen parametros
+//Retorno: Al ser un integer, se tiene un return 0 al final para definir que se ha acabado el código
 int main()
 {
     menu();
     return 0;
-}
+};
