@@ -4,8 +4,8 @@
 
 using namespace std;
 
-class Reporte
-{
+class Reporte{
+
 public:
 	float prediccion(float, int);
 };
@@ -13,7 +13,7 @@ public:
 //Funcion:Se toman los parametros definidos y se multiplican entre ellos
 //Parametros: Un float que representa la cantidad de dinero y un integer que representa a cuanto tiempo a futuro se quiere predecir
 //Retorno: Se regresa el valor de ambos parametros multiplicados
-float Reporte::prediccion(float dinero, int tiempo)
-{
+float Reporte::prediccion(float dinero, int tiempo){
+
 	return dinero * tiempo;
 };

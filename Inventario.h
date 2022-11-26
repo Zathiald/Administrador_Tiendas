@@ -8,8 +8,8 @@
 
 using namespace std;
 
-class Inventario
-{
+class Inventario{
+
 public:
     void agregarFruta();
     void quitarFruta();
@@ -46,8 +46,8 @@ private:
 //Funcion:Se analiza cada elemento en la lista de inventario de fruta, para imprimir cada elemento junto con su numero de index
 //Parametros: No se tienen parametros para esta función, pero si se utiliza la variable de inventario de fruta
 //Retorno: Se regresa una lista de cada valor de el inventario de fruta junto con su index
-void Inventario::printFruta()
-{
+void Inventario::printFruta(){
+
     for (int x = 0; x < tamFruta; x++)
     {
         cout << "Index: " << x << endl;
@@ -58,8 +58,8 @@ void Inventario::printFruta()
 //Funcion:Se analiza cada elemento en la lista de inventario de vegetales, para imprimir cada elemento junto con su numero de index
 //Parametros: No se tienen parametros para esta función, pero si se utiliza la variable de inventario de vegetales
 //Retorno: Se regresa una lista de cada valor de el inventario de vegetales junto con su index
-void Inventario::printVegetal()
-{
+void Inventario::printVegetal(){
+
     for (int x = 0; x < tamVegetal; x++)
     {
         cout << "Index: " << x << endl;
@@ -70,8 +70,8 @@ void Inventario::printVegetal()
 //Funcion:Se analiza cada elemento en la lista de inventario de carne, para imprimir cada elemento junto con su numero de index
 //Parametros: No se tienen parametros para esta función, pero si se utiliza la variable de inventario de carne
 //Retorno: Se regresa una lista de cada valor de el inventario de carne junto con su index
-void Inventario::printCarne()
-{
+void Inventario::printCarne(){
+
     for (int x = 0; x < tamCarne; x++)
     {
         cout << "Index: " << x << endl;
@@ -82,8 +82,8 @@ void Inventario::printCarne()
 //Funcion:Se analiza cada elemento en la lista de inventario de electronicos, para imprimir cada elemento junto con su numero de index
 //Parametros: No se tienen parametros para esta función, pero si se utiliza la variable de inventario de electronicos
 //Retorno: Se regresa una lista de cada valor de el inventario de electronicos junto con su index
-void Inventario::printElectro()
-{
+void Inventario::printElectro(){
+
     for (int x = 0; x < tamElectro; x++)
     {
         cout << "Index: " << x << endl;
@@ -94,64 +94,64 @@ void Inventario::printElectro()
 //Funcion:Darle nuevo valor a la variable de tamaño de la lista de frutas
 //Parametros: Se toma un parametro de float para darle ese valor a la variable de tamaño de la lista de frutas
 //Retorno: Al ser una función void no se tiene un retorno en sí,solo se actualiza el valor de la variable
-void Inventario::setTamFruta(int tam)
-{
+void Inventario::setTamFruta(int tam){
+
     tamFruta = tam;
 };
 
 //Funcion:Darle nuevo valor a la variable de tamaño de la lista de vegetales
 //Parametros: Se toma un parametro de float para darle ese valor a la variable de tamaño de la lista de vegetales
 //Retorno: Al ser una función void no se tiene un retorno en sí,solo se actualiza el valor de la variable
-void Inventario::setTamVegetal(int tam)
-{
+void Inventario::setTamVegetal(int tam){
+
     tamVegetal = tam;
 };
 
 //Funcion:Darle nuevo valor a la variable de tamaño de la lista de carne
 //Parametros: Se toma un parametro de float para darle ese valor a la variable de tamaño de la lista de carne
 //Retorno: Al ser una función void no se tiene un retorno en sí,solo se actualiza el valor de la variable
-void Inventario::setTamCarne(int tam)
-{
+void Inventario::setTamCarne(int tam){
+
     tamCarne = tam;
 };
 
 //Funcion:Darle nuevo valor a la variable de tamaño de la lista de electronicos
 //Parametros: Se toma un parametro de float para darle ese valor a la variable de tamaño de la lista de electronicos
 //Retorno: Al ser una función void no se tiene un retorno en sí,solo se actualiza el valor de la variable
-void Inventario::setTamElectro(int tam)
-{
+void Inventario::setTamElectro(int tam){
+
     tamElectro = tam;
 };
 
 //Funcion:Regresar el valor de la variable de tamaño de la lista de frutas
 //Parametros: Al ser un getter no se obtienen parametros, solo se regresa un valor
 //Retorno: Se regresa el valor de la variable de tamaño de la lista de frutas
-int Inventario::getTamFruta()
-{
+int Inventario::getTamFruta(){
+
     return tamFruta;
 };
 
 //Funcion:Regresar el valor de la variable de tamaño de la lista de vegetales
 //Parametros: Al ser un getter no se obtienen parametros, solo se regresa un valor
 //Retorno: Se regresa el valor de la variable de tamaño de la lista de vegetales
-int Inventario::getTamVegetal()
-{
+int Inventario::getTamVegetal(){
+
     return tamVegetal;
 };
 
 //Funcion:Regresar el valor de la variable de tamaño de la lista de carne
 //Parametros: Al ser un getter no se obtienen parametros, solo se regresa un valor
 //Retorno: Se regresa el valor de la variable de tamaño de la lista de carne
-int Inventario::getTamCarne()
-{
+int Inventario::getTamCarne(){
+
     return tamCarne;
 };
 
 //Funcion:Regresar el valor de la variable de tamaño de la lista de electronicos
 //Parametros: Al ser un getter no se obtienen parametros, solo se regresa un valor
 //Retorno: Se regresa el valor de la variable de tamaño de la lista de electronicos
-int Inventario::getTamElectro()
-{
+int Inventario::getTamElectro(){
+
     return tamElectro;
 };
 
@@ -159,8 +159,8 @@ int Inventario::getTamElectro()
 // aumentando también la variable de tamaño de la lista de frutas, después se le pregunta al usuario si quiere ingresar otra fruta, y si dice que si, se llama de nuevo la función
 //Parametros: No se tienen parametros para esta función, pero si se utiliza la variable de inventario de fruta y se hacen variables de fruta a ingresar y opcion para poner otra fruta
 //Retorno: Al ser un void no se regresa ningún valor, pero si se actualiza el inventario de frutas
-void Inventario::agregarFruta()
-{
+void Inventario::agregarFruta(){
+
     string fruta;
     int nuevaFruta;
     do
@@ -184,8 +184,8 @@ void Inventario::agregarFruta()
 //Funcíon: Se le pide al usuario que número de index quiere quitar de la lista, después se quita ese elemento de la lista y se baja el index de la lista a uno menos
 //Parametros: No hay parametros en si para esta función, pero si se utiliza un integer para saber que número de index eliminar y se altera el inventario de fruta y su tamaño
 //Retorno: Al ser un void no hay return explicito, pero si se regresa un inventario de fruta y tamaño alterado
-void Inventario::quitarFruta()
-{
+void Inventario::quitarFruta(){
+
     int numQuitar;
     printFruta();
     cout << endl;
@@ -201,8 +201,8 @@ void Inventario::quitarFruta()
 // aumentando también la variable de tamaño de la lista de vegetales, después se le pregunta al usuario si quiere ingresar otro vegetal, y si dice que si, se llama de nuevo la función
 //Parametros: No se tienen parametros para esta función, pero si se utiliza la variable de inventario de vegetal y se hacen variables de vegetal a ingresar y opcion para poner otro vegetal
 //Retorno: Al ser un void no se regresa ningún valor, pero si se actualiza el inventario de vegetales
-void Inventario::agregarVegetal()
-{
+void Inventario::agregarVegetal(){
+
     string Vegetal;
     int nuevoVegetal;
     do
@@ -226,8 +226,8 @@ void Inventario::agregarVegetal()
 //Funcíon: Se le pide al usuario que número de index quiere quitar de la lista, después se quita ese elemento de la lista y se baja el index de la lista a uno menos
 //Parametros: No hay parametros en si para esta función, pero si se utiliza un integer para saber que número de index eliminar y se altera el inventario de vegetales y su tamaño
 //Retorno: Al ser un void no hay return explicito, pero si se regresa un inventario de vegetales y tamaño alterado
-void Inventario::quitarVegetal()
-{
+void Inventario::quitarVegetal(){
+
     int numQuitar;
     printVegetal();
     cout << endl;
@@ -243,8 +243,8 @@ void Inventario::quitarVegetal()
 // aumentando también la variable de tamaño de la lista de carne, después se le pregunta al usuario si quiere ingresar otra carne, y si dice que si, se llama de nuevo la función
 //Parametros: No se tienen parametros para esta función, pero si se utiliza la variable de inventario de carne y se hacen variables de carne a ingresar y opcion para poner otra carne
 //Retorno: Al ser un void no se regresa ningún valor, pero si se actualiza el inventario de carne
-void Inventario::agregarCarne()
-{
+void Inventario::agregarCarne(){
+
     string Carne;
     int nuevoCarne;
     do
@@ -268,8 +268,8 @@ void Inventario::agregarCarne()
 //Funcíon: Se le pide al usuario que número de index quiere quitar de la lista, después se quita ese elemento de la lista y se baja el index de la lista a uno menos
 //Parametros: No hay parametros en si para esta función, pero si se utiliza un integer para saber que número de index eliminar y se altera el inventario de carne y su tamaño
 //Retorno: Al ser un void no hay return explicito, pero si se regresa un inventario de carne y tamaño alterado
-void Inventario::quitarCarne()
-{
+void Inventario::quitarCarne(){
+
     int numQuitar;
     printCarne();
     cout << endl;
@@ -286,8 +286,8 @@ void Inventario::quitarCarne()
 // aumentando también la variable de tamaño de la lista de electronicos, después se le pregunta al usuario si quiere ingresar otro electronico, y si dice que si, se llama de nuevo la función
 //Parametros: No se tienen parametros para esta función, pero si se utiliza la variable de inventario de electronicos y se hacen variables de electronicos a ingresar y opcion para poner otro electronico
 //Retorno: Al ser un void no se regresa ningún valor, pero si se actualiza el inventario de electronicos
-void Inventario::agregarElectro()
-{
+void Inventario::agregarElectro(){
+
     string Electro;
     int nuevoElectro;
     do
@@ -311,8 +311,8 @@ void Inventario::agregarElectro()
 //Funcíon: Se le pide al usuario que número de index quiere quitar de la lista, después se quita ese elemento de la lista y se baja el index de la lista a uno menos
 //Parametros: No hay parametros en si para esta función, pero si se utiliza un integer para saber que número de index eliminar y se altera el inventario de electronicos y su tamaño
 //Retorno: Al ser un void no hay return explicito, pero si se regresa un inventario de electronicos y tamaño alterado
-void Inventario::quitarElectro()
-{
+void Inventario::quitarElectro(){
+
     int numQuitar;
     printElectro();
     cout << endl;

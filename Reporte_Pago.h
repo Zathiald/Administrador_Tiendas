@@ -4,8 +4,8 @@
 #include "Reporte.h"
 using namespace std;
 
-class Reporte_Pago : public Reporte
-{
+class Reporte_Pago : public Reporte{
+
 public:
 	float getReportePagoDias();
 	void setReportePagoDias(float);
@@ -28,56 +28,56 @@ private:
 //Funcion:Regresar el valor de la variable de reporte de pago por dias
 //Parametros: Al ser un getter no se obtienen parametros, solo se regresa un valor
 //Retorno: Se regresa el valor de la variable de reporte de pago por dias
-float Reporte_Pago::getReportePagoDias()
-{
+float Reporte_Pago::getReportePagoDias(){
+
 	return reportePagoDias;
 };
 
 //Funcion:Darle nuevo valor a la variable de reporte de pago por dias
 //Parametros: Se toma un parametro de float para darle ese valor a la variable de reporte de pago por dias
 //Retorno: Al ser una función void no se tiene un retorno en sí,solo se actualiza el valor de la variable
-void Reporte_Pago::setReportePagoDias(float pago)
-{
+void Reporte_Pago::setReportePagoDias(float pago){
+
 	reportePagoDias = pago;
 };
 
 //Funcion:Regresar el valor de la variable de reporte de pago por mes
 //Parametros: Al ser un getter no se obtienen parametros, solo se regresa un valor
 //Retorno: Se regresa el valor de la variable de reporte de pago por mes
-float Reporte_Pago::getReportePagoMes()
-{
+float Reporte_Pago::getReportePagoMes(){
+
 	return reportePagoMes;
 };
 
 //Funcion:Darle nuevo valor a la variable de reporte de pago por mes
 //Parametros: Se toma un parametro de float para darle ese valor a la variable de reporte de pago por mes
 //Retorno: Al ser una función void no se tiene un retorno en sí,solo se actualiza el valor de la variable
-void Reporte_Pago::setReportePagoMes(float pago)
-{
+void Reporte_Pago::setReportePagoMes(float pago){
+
 	reportePagoMes = pago;
 };
 
 //Funcion:Regresar el valor de la variable de reporte de pago por año
 //Parametros: Al ser un getter no se obtienen parametros, solo se regresa un valor
 //Retorno: Se regresa el valor de la variable de reporte de pago por año
-float Reporte_Pago::getReportePagoAnual()
-{
+float Reporte_Pago::getReportePagoAnual(){
+
 	return reportePagoAnual;
 };
 
 //Funcion:Darle nuevo valor a la variable de reporte de pago por año
 //Parametros: Se toma un parametro de float para darle ese valor a la variable de reporte de pago por año
 //Retorno: Al ser una función void no se tiene un retorno en sí,solo se actualiza el valor de la variable
-void Reporte_Pago::setReportePagoAnual(float pago)
-{
+void Reporte_Pago::setReportePagoAnual(float pago){
+
 	reportePagoAnual = pago;
 };
 
 //Funcion: Se utiliza la función de prediccion de la clase de reporte, para darle valor a la variable de reporte de pago de dias
 //Parametros: Se tiene el parametro de la clase de Reporte, un float que representa la suma de los tipos de pagos y un integer que se usara en la función de predicción
 //Retorno: Al ser una función void, no se tiene un retorno explicito, solo se la da el valor al reporte de pago de dias
-void Reporte_Pago::reportarDias(Reporte reporte,float pago,int dia)
-{
+void Reporte_Pago::reportarDias(Reporte reporte,float pago,int dia){
+
 	float pagoDia = reporte.prediccion(pago, dia);
 	setReportePagoDias(pagoDia);
 };
@@ -85,8 +85,8 @@ void Reporte_Pago::reportarDias(Reporte reporte,float pago,int dia)
 //Funcion: Se utiliza la función de prediccion de la clase de reporte, para darle valor a la variable de reporte de pago de mes
 //Parametros: Se tiene el parametro de la clase de Reporte, un float que representa la suma de los tipos de pagos y un integer que se usara en la función de predicción
 //Retorno: Al ser una función void, no se tiene un retorno explicito, solo se la da el valor al reporte de pago de mes
-void Reporte_Pago::reportarMes(Reporte reporte,float pago,int mes)
-{
+void Reporte_Pago::reportarMes(Reporte reporte,float pago,int mes){
+
 	float pagoMes = reporte.prediccion(pago, mes);
 	setReportePagoMes(pagoMes);
 };
@@ -94,8 +94,8 @@ void Reporte_Pago::reportarMes(Reporte reporte,float pago,int mes)
 //Funcion: Se utiliza la función de prediccion de la clase de reporte, para darle valor a la variable de reporte de pago de años
 //Parametros: Se tiene el parametro de la clase de Reporte, un float que representa la suma de los tipos de pagos y un integer que se usara en la función de predicción
 //Retorno: Al ser una función void, no se tiene un retorno explicito, solo se la da el valor al reporte de pago de años
-void Reporte_Pago::reportarAnual(Reporte reporte,float pago,int anual)
-{
+void Reporte_Pago::reportarAnual(Reporte reporte,float pago,int anual){
+
 	float pagoAnual = reporte.prediccion(pago,anual);
 	setReportePagoAnual(pagoAnual);
 };
@@ -103,7 +103,7 @@ void Reporte_Pago::reportarAnual(Reporte reporte,float pago,int anual)
 //Funcion: Se actualiza la agregación de la clase de Pago
 //Parametros: Se tiene el parametro de la clase de Pago
 //Retorno: Al ser una función void, no se tiene un retorno explicito, se actualiza y se agrega la clase de Pago a la clase de Reporte de Pago
-void Reporte_Pago::agregarPago(Pago pag)
-{
+void Reporte_Pago::agregarPago(Pago pag){
+
 	pago = pag;
 };

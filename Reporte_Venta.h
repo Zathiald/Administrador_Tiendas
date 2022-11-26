@@ -4,8 +4,8 @@
 #include "Reporte.h"
 using namespace std;
 
-class Reporte_Venta : public Reporte
-{
+class Reporte_Venta : public Reporte{
+
 public:
     float getReporteVentaDias();
     void setReporteVentaDias(float);
@@ -28,56 +28,56 @@ private:
 //Funcion:Regresar el valor de la variable de reporte de venta por dias
 //Parametros: Al ser un getter no se obtienen parametros, solo se regresa un valor
 //Retorno: Se regresa el valor de la variable de reporte de venta por dias
-float Reporte_Venta::getReporteVentaDias()
-{
+float Reporte_Venta::getReporteVentaDias(){
+
     return reporteVentaDias;
 };
 
 //Funcion:Darle nuevo valor a la variable de reporte de venta por dias
 //Parametros: Se toma un parametro de float para darle ese valor a la variable de reporte de venta por dias
 //Retorno: Al ser una función void no se tiene un retorno en sí,solo se actualiza el valor de la variable
-void Reporte_Venta::setReporteVentaDias(float ventas)
-{
+void Reporte_Venta::setReporteVentaDias(float ventas){
+
     reporteVentaDias = ventas;
 };
 
 //Funcion:Regresar el valor de la variable de reporte de venta por mes
 //Parametros: Al ser un getter no se obtienen parametros, solo se regresa un valor
 //Retorno: Se regresa el valor de la variable de reporte de venta por mes
-float Reporte_Venta::getReporteVentaMes()
-{
+float Reporte_Venta::getReporteVentaMes(){
+
     return reporteVentaMes;
 };
 
 //Funcion:Darle nuevo valor a la variable de reporte de venta por mes
 //Parametros: Se toma un parametro de float para darle ese valor a la variable de reporte de venta por mes
 //Retorno: Al ser una función void no se tiene un retorno en sí,solo se actualiza el valor de la variable
-void Reporte_Venta::setReporteVentaMes(float ventas)
-{
+void Reporte_Venta::setReporteVentaMes(float ventas){
+
     reporteVentaMes = ventas;
 };
 
 //Funcion:Regresar el valor de la variable de reporte de venta por año
 //Parametros: Al ser un getter no se obtienen parametros, solo se regresa un valor
 //Retorno: Se regresa el valor de la variable de reporte de venta por año
-float Reporte_Venta::getReporteVentaAnual()
-{
+float Reporte_Venta::getReporteVentaAnual(){
+
     return reporteVentaAnual;
 };
 
 //Funcion:Darle nuevo valor a la variable de reporte de venta por año
 //Parametros: Se toma un parametro de float para darle ese valor a la variable de reporte de venta por año
 //Retorno: Al ser una función void no se tiene un retorno en sí,solo se actualiza el valor de la variable
-void Reporte_Venta::setReporteVentaAnual(float ventas)
-{
+void Reporte_Venta::setReporteVentaAnual(float ventas){
+
     reporteVentaAnual = ventas;
 };
 
 //Funcion: Se utiliza la función de prediccion de la clase de reporte, para darle valor a la variable de reporte de venta de dias
 //Parametros: Se tiene el parametro de la clase de Reporte y un integer que se usara en la función de predicción
 //Retorno: Al ser una función void, no se tiene un retorno explicito, solo se la da el valor al reporte de venta de dias
-void Reporte_Venta::reportarDias(Reporte reporte,int dia)
-{
+void Reporte_Venta::reportarDias(Reporte reporte,int dia){
+
     float v_d = reporte.prediccion(venta.getVentasDia(), dia);
     setReporteVentaDias(v_d);
 };
@@ -85,8 +85,8 @@ void Reporte_Venta::reportarDias(Reporte reporte,int dia)
 //Funcion: Se utiliza la función de prediccion de la clase de reporte, para darle valor a la variable de reporte de venta de mes
 //Parametros: Se tiene el parametro de la clase de Reporte y un integer que se usara en la función de predicción
 //Retorno: Al ser una función void, no se tiene un retorno explicito, solo se la da el valor al reporte de venta de mes
-void Reporte_Venta::reportarMes(Reporte reporte,int mes)
-{
+void Reporte_Venta::reportarMes(Reporte reporte,int mes){
+
     float v_m = reporte.prediccion(venta.getVentasMes(), mes);
     setReporteVentaMes(v_m);
 };
@@ -94,8 +94,8 @@ void Reporte_Venta::reportarMes(Reporte reporte,int mes)
 //Funcion: Se utiliza la función de prediccion de la clase de reporte, para darle valor a la variable de reporte de venta de años
 //Parametros: Se tiene el parametro de la clase de Reporte y un integer que se usara en la función de predicción
 //Retorno: Al ser una función void, no se tiene un retorno explicito, solo se la da el valor al reporte de venta de años
-void Reporte_Venta::reportarAnual(Reporte reporte,int anio)
-{
+void Reporte_Venta::reportarAnual(Reporte reporte,int anio){
+
     float v_a = reporte.prediccion(venta.getVentasAnual(), anio);
     setReporteVentaAnual(v_a);
 };
@@ -103,8 +103,8 @@ void Reporte_Venta::reportarAnual(Reporte reporte,int anio)
 //Funcion: Se actualiza la agregación de la clase de Venta
 //Parametros: Se tiene el parametro de la clase de Venta
 //Retorno: Al ser una función void, no se tiene un retorno explicito, se actualiza y se agrega la clase de Venta a la clase de Reporte de Venta
-void Reporte_Venta::agregarVenta(Venta vent)
-{
+void Reporte_Venta::agregarVenta(Venta vent){
+
     venta = vent;
 };
 

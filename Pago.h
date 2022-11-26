@@ -4,8 +4,8 @@
 
 using namespace std;
 
-class Pago
-{
+class Pago{
+
 public:
     float getPagosEmpleado();
     void setPagosEmpleado(float);
@@ -23,48 +23,48 @@ private:
 //Funcion:Darle nuevo valor a la variable de pago para empleados
 //Parametros: Se toma un parametro de float para darle ese valor a la variable de pago para empleados
 //Retorno: Al ser una función void no se tiene un retorno en sí,solo se actualiza el valor de la variable
-void Pago::setPagosEmpleado(float pago_Empleado)
-{
+void Pago::setPagosEmpleado(float pago_Empleado){
+
     pagoEmpleado = pago_Empleado;
 };
 
 //Funcion:Regresar el valor de la variable de pago para empleados
 //Parametros: Al ser un getter no se obtienen parametros, solo se regresa un valor
 //Retorno: Se regresa el valor de la variable de pago para empleados
-float Pago::getPagosEmpleado()
-{
+float Pago::getPagosEmpleado(){
+
     return pagoEmpleado;
 };
 
 //Funcion:Darle nuevo valor a la variable de pago para la luz
 //Parametros: Se toma un parametro de float para darle ese valor a la variable de pago para la luz
 //Retorno: Al ser una función void no se tiene un retorno en sí,solo se actualiza el valor de la variable
-void Pago::setPagosLuz(float pago_Luz)
-{
+void Pago::setPagosLuz(float pago_Luz){
+
     pagoLuz = pago_Luz;
 };
 
 //Funcion:Regresar el valor de la variable de pago para la lu<
 //Parametros: Al ser un getter no se obtienen parametros, solo se regresa un valor
 //Retorno: Se regresa el valor de la variable de pago para la luz
-float Pago::getPagosLuz()
-{
+float Pago::getPagosLuz(){
+
     return pagoLuz;
 };
 
 //Funcion:Darle nuevo valor a la variable de pago para el agua
 //Parametros: Se toma un parametro de float para darle ese valor a la variable de pago para el agua
 //Retorno: Al ser una función void no se tiene un retorno en sí,solo se actualiza el valor de la variable
-void Pago::setPagosAgua(float pago_Agua)
-{
+void Pago::setPagosAgua(float pago_Agua){
+
     pagoAgua = pago_Agua;
 };
 
 //Funcion:Regresar el valor de la variable de pago para el agua
 //Parametros: Al ser un getter no se obtienen parametros, solo se regresa un valor
 //Retorno: Se regresa el valor de la variable de pago para el agua
-float Pago::getPagosAgua()
-{
+float Pago::getPagosAgua(){
+
     return pagoAgua;
 };
 
