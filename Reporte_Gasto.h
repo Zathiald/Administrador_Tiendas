@@ -5,74 +5,74 @@ using namespace std;
 class Reporte_Gasto : public Reporte
 {
 public:
-	float getreporteGasto_dias();
-	void setreporteGasto_dias(float);
-	float getreporteGasto_mes();
-	void setreporteGasto_mes(float);
-	float getreporteGasto_anual();
-	void setreporteGasto_anual(float);
-	void reportar_dias(Reporte,int);
-	void reportar_mes(Reporte,int);
-	void reportar_anual(Reporte,int);
-	void agregar_gasto(Gasto);
+	float getReporteGastoDias();
+	void setReporteGastoDias(float);
+	float getReporteGastoMes();
+	void setReporteGastoMes(float);
+	float getReporteGastoAnual();
+	void setReporteGastoAnual(float);
+	void reportarDias(Reporte,int);
+	void reportarMes(Reporte,int);
+	void reportarAnual(Reporte,int);
+	void agregarGasto(Gasto);
 
 private:
-	float reporteGasto_dias;
-	float reporteGasto_mes;
-	float reporteGasto_anual;
+	float reporteGastoDias;
+	float reporteGastoMes;
+	float reporteGastoAnual;
 	Gasto gasto;
 };
 
 
-float Reporte_Gasto::getreporteGasto_dias()
+float Reporte_Gasto::getReporteGastoDias()
 {
-	return reporteGasto_dias;
+	return reporteGastoDias;
 };
 
-void Reporte_Gasto::setreporteGasto_dias(float g)
+void Reporte_Gasto::setReporteGastoDias(float gasto)
 {
-	reporteGasto_dias = g;
+	reporteGastoDias = gasto;
 };
 
-float Reporte_Gasto::getreporteGasto_mes()
+float Reporte_Gasto::getReporteGastoMes()
 {
-	return reporteGasto_mes;
+	return reporteGastoMes;
 };
 
-void Reporte_Gasto::setreporteGasto_mes(float g)
+void Reporte_Gasto::setReporteGastoMes(float gasto)
 {
-	reporteGasto_mes = g;
+	reporteGastoMes = gasto;
 };
 
-float Reporte_Gasto::getreporteGasto_anual()
+float Reporte_Gasto::getReporteGastoAnual()
 {
-	return reporteGasto_anual;
+	return reporteGastoAnual;
 };
 
-void Reporte_Gasto::setreporteGasto_anual(float g)
+void Reporte_Gasto::setReporteGastoAnual(float gasto)
 {
-	reporteGasto_anual = g;
+	reporteGastoAnual = gasto;
 };
 
-void Reporte_Gasto::reportar_dias(Reporte reporte,int d)
+void Reporte_Gasto::reportarDias(Reporte reporte,int dia)
 {
-	float g_d = reporte.prediccion(gasto.getGastos_dia(), d);
-	setreporteGasto_dias(g_d);
+	float g_d = reporte.prediccion(gasto.getGastosDia(), dia);
+	setReporteGastoDias(g_d);
 };
 
-void Reporte_Gasto::reportar_mes(Reporte reporte,int m)
+void Reporte_Gasto::reportarMes(Reporte reporte,int mes)
 {
-	float g_m = reporte.prediccion(gasto.getGastos_mes(), m);
-	setreporteGasto_mes(g_m);
+	float g_m = reporte.prediccion(gasto.getGastosMes(), mes);
+	setReporteGastoMes(g_m);
 };
 
-void Reporte_Gasto::reportar_anual(Reporte reporte,int a)
+void Reporte_Gasto::reportarAnual(Reporte reporte,int anio)
 {
-	float g_a = reporte.prediccion(gasto.getGastos_anual(), a);
-	setreporteGasto_anual(g_a);
+	float g_a = reporte.prediccion(gasto.getGastosAnual(), anio);
+	setReporteGastoAnual(g_a);
 };
 
-void Reporte_Gasto::agregar_gasto(Gasto gast)
+void Reporte_Gasto::agregarGasto(Gasto gast)
 {
 	gasto = gast;
 };

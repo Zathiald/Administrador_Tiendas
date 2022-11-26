@@ -5,47 +5,47 @@ using namespace std;
 class Pago
 {
 public:
-    float getPagos_empleado();
-    void setPagos_empleado(float);
-    float getPagos_luz();
-    void setPagos_luz(float);
-    float getPagos_agua();
-    void setPagos_agua(float);
+    float getPagosEmpleado();
+    void setPagosEmpleado(float);
+    float getPagosLuz();
+    void setPagosLuz(float);
+    float getPagosAgua();
+    void setPagosAgua(float);
 
 private:
-    float pago_empleado;
-    float pago_luz;
-    float pago_agua;
+    float pagoEmpleado;
+    float pagoLuz;
+    float pagoAgua;
 };
 
-void Pago::setPagos_empleado(float p_e)
+void Pago::setPagosEmpleado(float pago_Empleado)
 {
-    pago_empleado = p_e;
+    pagoEmpleado = pago_Empleado;
 }
 
-float Pago::getPagos_empleado()
+float Pago::getPagosEmpleado()
 {
-    return pago_empleado;
+    return pagoEmpleado;
 }
 
-void Pago::setPagos_luz(float p_l)
+void Pago::setPagosLuz(float pago_Luz)
 {
-    pago_luz = p_l;
+    pagoLuz = pago_Luz;
 }
 
-float Pago::getPagos_luz()
+float Pago::getPagosLuz()
 {
-    return pago_luz;
+    return pagoLuz;
 }
 
-void Pago::setPagos_agua(float p_a)
+void Pago::setPagosAgua(float pago_Agua)
 {
-    pago_agua = p_a;
+    pagoAgua = pago_Agua;
 }
 
-float Pago::getPagos_agua()
+float Pago::getPagosAgua()
 {
-    return pago_agua;
+    return pagoAgua;
 }
 
 

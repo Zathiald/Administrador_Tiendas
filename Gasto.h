@@ -5,47 +5,47 @@ using namespace std;
 class Gasto
 {
 public:
-    float getGastos_dia();
-    void setGastos_dia(float);
-    float getGastos_mes();
-    void setGastos_mes(float);
-    float getGastos_anual();
-    void setGastos_anual(float);
+    float getGastosDia();
+    void setGastosDia(float);
+    float getGastosMes();
+    void setGastosMes(float);
+    float getGastosAnual();
+    void setGastosAnual(float);
 
 
 private:
-    float gastos_dia;
-    float gastos_mes;
-    float gastos_anual;
+    float gastosDia;
+    float gastosMes;
+    float gastosAnual;
 };
 
-void Gasto::setGastos_dia(float g_d)
+void Gasto::setGastosDia(float gasto_Dia)
 {
-    gastos_dia = g_d;
+    gastosDia = gasto_Dia;
 }
 
-float Gasto::getGastos_dia()
+float Gasto::getGastosDia()
 {
-    return gastos_dia;
+    return gastosDia;
 }
 
-void Gasto::setGastos_mes(float g_m)
+void Gasto::setGastosMes(float gasto_Mes)
 {
-    gastos_mes = g_m;
+    gastosMes = gasto_Mes;
 }
 
-float Gasto::getGastos_mes()
+float Gasto::getGastosMes()
 {
-    return gastos_mes;
+    return gastosMes;
 }
 
-void Gasto::setGastos_anual(float g_a)
+void Gasto::setGastosAnual(float gasto_Anual)
 {
-    gastos_anual = g_a;
+    gastosAnual = gasto_Anual;
 }
 
-float Gasto::getGastos_anual()
+float Gasto::getGastosAnual()
 {
-    return gastos_anual;
+    return gastosAnual;
 }
 

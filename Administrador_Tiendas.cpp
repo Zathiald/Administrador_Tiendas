@@ -11,7 +11,6 @@
 #include <list>
 #include <vector>
 
-
 using namespace std;
 
 Venta venta;
@@ -27,73 +26,76 @@ void reportarInv();
 void reportarPago();
 void reportarGasto();
 void reportarVenta();
-void agregar_inv();
-void quitar_inv();
-void menu_ventas();
-void menu_gastos();
-void menu_pagos();
-void menu_inv();
-void menu_rep();
+void agregarInv();
+void quitarInv();
+void menuVentas();
+void menuGastos();
+void menuPagos();
+void menuInv();
+void menuRep();
 void menu();
 
 
 void reportarGen()
 {
-    float pagos = pago.getPagos_agua() + pago.getPagos_empleado() + pago.getPagos_luz();
+    float pagos = pago.getPagosAgua() + pago.getPagosEmpleado() + pago.getPagosLuz();
     cout << "------REPORTE GENERAL------" << endl;
     cout << "--------------------------------------" << endl;
     cout << "------REPORTE TOTAL DINERO EN DIAS------" << endl;
-    int d;
+    int dia;
     cout << "Ingresa el numero de dias a futuro: " << endl;
-    cin >> d;
-    reporteventa.reportar_dias(reporte, d);
-    float venta_d = reporteventa.getreporteVenta_dias();
-    reportegasto.reportar_dias(reporte, d);
-    float gasto_d = reportegasto.getreporteGasto_dias();
-    reportepago.reportar_dias(reporte,pagos/7,d);
-    float pago_d = reportepago.getreportePago_dias();
-    float total_d = venta_d - (gasto_d + pago_d);
-    cout << "Dinero total despues de " << d << " dias a futuro: " << total_d<<endl;
+    cin >> dia;
+    reporteventa.reportarDias(reporte, dia);
+    float ventaDia = reporteventa.getReporteVentaDias();
+    reportegasto.reportarDias(reporte, dia);
+    float gastoDia = reportegasto.getReporteGastoDias();
+    float pagosDia = pagos / 7;
+    reportepago.reportarDias(reporte,pagosDia,dia);
+    float pagoDia = reportepago.getReportePagoDias();
+    float totalDia = ventaDia - (gastoDia + pagoDia);
+    cout << "Dinero total despues de " << dia << " dias a futuro: " << totalDia<<endl;
     cout << "--------------------------------------" << endl;
     cout << "------REPORTE TOTAL DINERO EN MESES------" << endl;
-    int m;
+    int mes;
     cout << "Ingresa el numero de meses a futuro: " << endl;
-    cin >> m;
-    reporteventa.reportar_mes(reporte, m);
-    float venta_m = reporteventa.getreporteVenta_mes();
-    reportegasto.reportar_mes(reporte, m);
-    float gasto_m = reportegasto.getreporteGasto_mes();
-    reportepago.reportar_mes(reporte,pagos*4, m);
-    float pago_m = reportepago.getreportePago_mes();
-    float total_m = venta_m - (gasto_m + pago_m);
-    cout << "Dinero total despues de " << m << " meses a futuro: " << total_m << endl;
+    cin >> mes;
+    reporteventa.reportarMes(reporte, mes);
+    float ventaMes = reporteventa.getReporteVentaMes();
+    reportegasto.reportarMes(reporte, mes);
+    float gastoMes = reportegasto.getReporteGastoMes();
+    float pagosMes = pagos * 4;
+    reportepago.reportarMes(reporte,pagosMes, mes);
+    float pagoMes = reportepago.getReportePagoMes();
+    float totalMes = ventaMes - (gastoMes + pagoMes);
+    cout << "Dinero total despues de " << mes << " meses a futuro: " << totalMes << endl;
     cout << "--------------------------------------" << endl;
     cout << "------REPORTE TOTAL DINERO EN ANIOS------" << endl;
-    int a;
+    int anio;
     cout << "Ingresa el numero de anios a futuro: " << endl;
-    cin >> a;
-    reporteventa.reportar_anual(reporte, d);
-    float venta_a=reporteventa.getreporteVenta_anual();
-    reportegasto.reportar_anual(reporte, d);
-    float gasto_a = reportegasto.getreporteGasto_anual();
-    reportepago.reportar_anual(reporte, pagos*52, d);
-    float pago_a = reportepago.getreportePago_anual();
-    float total_a = venta_a - (gasto_a + pago_a);
-    cout << "Dinero total despues de " << a << " anios a futuro: " << total_a << endl;
+    cin >> anio;
+    reporteventa.reportarAnual(reporte, anio);
+    float ventaAnual=reporteventa.getReporteVentaAnual();
+    reportegasto.reportarAnual(reporte, anio);
+    float gastoAnual = reportegasto.getReporteGastoAnual();
+    float pagosAnual = pagos * 52;
+    reportepago.reportarAnual(reporte, pagosAnual, anio);
+    float pagoAnual = reportepago.getReportePagoAnual();
+    float totalAnual = ventaAnual - (gastoAnual + pagoAnual);
+    cout << "Dinero total despues de " << anio << " anios a futuro: " << totalAnual << endl;
     cout << "--------------------------------------" << endl;
-    cout << "------INVENTARIO DE FRUTAS------";
-    inventario.printfruta();
+    cout << "------INVENTARIO DE FRUTAS------" << endl;
+    inventario.printFruta();
     cout << "--------------------------------------" << endl;
-    cout << "------INVENTARIO DE VEGETALES------";
-    inventario.printvegetal();
+    cout << "------INVENTARIO DE VEGETALES------"<<endl;
+    inventario.printVegetal();
     cout << "--------------------------------------" << endl;
-    cout << "------INVENTARIO DE CARNES------";
-    inventario.printcarne();
+    cout << "------INVENTARIO DE CARNES------"<<endl;
+    inventario.printCarne();
     cout << "--------------------------------------" << endl;
-    cout << "------INVENTARIO DE ELECTRONICOS------";
-    inventario.printelectro();
+    cout << "------INVENTARIO DE ELECTRONICOS------"<<endl;
+    inventario.printElectro();
     cout << "--------------------------------------" << endl;
-    menu_rep();
+    menuRep();
 }
 
 void reportarInv()
@@ -112,7 +114,7 @@ void reportarInv()
         {
             cout << "Inventario de Frutas" << endl;
             cout << "--------------------------------------" << endl;
-            inventario.printfruta();
+            inventario.printFruta();
             cout << "--------------------------------------" << endl;
             reportarInv();
         }
@@ -120,7 +122,7 @@ void reportarInv()
         {
             cout << "Inventario de Vegetales" << endl;
             cout << "--------------------------------------" << endl;
-            inventario.printvegetal();
+            inventario.printVegetal();
             cout << "--------------------------------------" << endl;
             reportarInv();
         }
@@ -128,7 +130,7 @@ void reportarInv()
         {
             cout << "Inventario de Carnes" << endl;
             cout << "--------------------------------------" << endl;
-            inventario.printcarne();
+            inventario.printCarne();
             cout << "--------------------------------------" << endl;
             reportarInv();
         }
@@ -136,7 +138,7 @@ void reportarInv()
         {
             cout << "Inventario de Electronicos" << endl;
             cout << "--------------------------------------" << endl;
-            inventario.printelectro();
+            inventario.printElectro();
             cout << "--------------------------------------" << endl;
             reportarInv();
         }
@@ -144,7 +146,7 @@ void reportarInv()
         {
             cout << "Regresando al menu..." << endl;
             cout << "--------------------------------------" << endl;
-            menu_rep();
+            menuRep();
         }
     } while (inv_op == 1 || inv_op == 2 || inv_op == 3 || inv_op == 4 || inv_op == 5);
     if (inv_op != 1 && inv_op != 2 && inv_op != 3 && inv_op != 4 && inv_op != 5)
@@ -157,53 +159,53 @@ void reportarInv()
 
 void reportarPago()
 {
-    int p_rp;
-    float pagos = pago.getPagos_agua() + pago.getPagos_empleado() + pago.getPagos_luz();
+    int opcionGasto;
+    float pagos = pago.getPagosAgua() + pago.getPagosEmpleado() + pago.getPagosLuz();
     cout << "Que tipo de pago quieres hacer reporte: " << endl;
     cout << "1 - Pago diario" << endl;
     cout << "2 - Pago mensual" << endl;
     cout << "3 - Pago anual" << endl;
-    cin >> p_rp;
+    cin >> opcionGasto;
     do
     {
-        if (p_rp == 1)
+        if (opcionGasto == 1)
         {
-            int d;
+            int dia;
             cout << "A cuantos dias a futuro quieres ver: " << endl;
-            cin >> d;
-            reportepago.reportar_dias(reporte,pagos/7,d);
-            cout << "Pagos en " << d << " dias: " << reportepago.getreportePago_dias()<<endl;
+            cin >> dia;
+            reportepago.reportarDias(reporte,pagos/7,dia);
+            cout << "Pagos en " << dia << " dias: " << reportepago.getReportePagoDias()<<endl;
             cout << "--------------------------------------" << endl;
             reportarPago();
         }
-        if (p_rp == 2)
+        if (opcionGasto == 2)
         {
-            int m;
+            int mes;
             cout << "A cuantos meses a futuro quieres ver: " << endl;
-            cin >> m;
-            reportepago.reportar_mes(reporte,pagos*4, m);
-            cout << "Pagos en " << m << " meses: " << reportepago.getreportePago_mes()<<endl;
+            cin >> mes;
+            reportepago.reportarMes(reporte,pagos*4, mes);
+            cout << "Pagos en " << mes << " meses: " << reportepago.getReportePagoMes()<<endl;
             cout << "--------------------------------------" << endl;
             reportarPago();
         }
-        if (p_rp == 3)
+        if (opcionGasto == 3)
         {
-            int a;
+            int anio;
             cout << "A cuantos años a futuro quieres ver: " << endl;
-            cin >> a;
-            reportepago.reportar_anual(reporte,pagos*52, a);
-            cout << "Pagos en " << a << " años: " << reportepago.getreportePago_anual()<<endl;
+            cin >> anio;
+            reportepago.reportarAnual(reporte,pagos*52, anio);
+            cout << "Pagos en " << anio << " años: " << reportepago.getReportePagoAnual()<<endl;
             cout << "--------------------------------------" << endl;
             reportarPago();
         }
-        if (p_rp == 4)
+        if (opcionGasto == 4)
         {
             cout << "Regresando al menu..." << endl;
             cout << "--------------------------------------" << endl;
-            menu_rep();
+            menuRep();
         }
-    } while (p_rp == 1 || p_rp == 2 || p_rp == 3 || p_rp == 4);
-    if (p_rp != 1 && p_rp != 2 && p_rp != 3 && p_rp != 4)
+    } while (opcionGasto == 1 || opcionGasto == 2 || opcionGasto == 3 || opcionGasto == 4);
+    if (opcionGasto != 1 && opcionGasto != 2 && opcionGasto != 3 && opcionGasto != 4)
     {
         cout << "Esa no es una opcion valida, escoge bien" << endl;
         cout << "--------------------------------------" << endl;
@@ -213,53 +215,53 @@ void reportarPago()
 
 void reportarGasto()
 {
-    int g_rp;
+    int opcionGasto;
     cout << "Que tipo de gasto quieres hacer reporte: " << endl;
     cout << "1 - Gasto diario" << endl;
     cout << "2 - Gasto mensual" << endl;
     cout << "3 - Gasto anual" << endl;
     cout << "4 - Regresar" << endl;
-    cin >> g_rp;
+    cin >> opcionGasto;
     do
     {
-        if (g_rp == 1)
+        if (opcionGasto == 1)
         {
-            int d;
+            int dia;
             cout << "A cuantos dias a futuro quieres ver: " << endl;
-            cin >> d;
-            reportegasto.reportar_dias(reporte,d);
-            cout << "Gastos en " << d << " dias: " << reportegasto.getreporteGasto_dias()<<endl;
+            cin >> dia;
+            reportegasto.reportarDias(reporte, dia);
+            cout << "Gastos en " << dia << " dias: " << reportegasto.getReporteGastoDias()<<endl;
             cout << "--------------------------------------" << endl;
             reportarGasto();
         }
-        if (g_rp == 2)
+        if (opcionGasto == 2)
         {
-            int m;
+            int mes;
             cout << "A cuantos meses a futuro quieres ver: " << endl;
-            cin >> m;
-            reportegasto.reportar_mes(reporte,m);
-            cout << "Gastos en " << m << " meses: " << reportegasto.getreporteGasto_mes()<<endl;
+            cin >> mes;
+            reportegasto.reportarMes(reporte,mes);
+            cout << "Gastos en " << mes << " meses: " << reportegasto.getReporteGastoMes()<<endl;
             cout << "--------------------------------------" << endl;
             reportarGasto();
         }
-        if (g_rp == 3)
+        if (opcionGasto == 3)
         {
-            int a;
+            int anio;
             cout << "A cuantos años a futuro quieres ver: " << endl;
-            cin >> a;
-            reportegasto.reportar_anual(reporte,a);
-            cout << "Gastos en " << a << " anos: " << reportegasto.getreporteGasto_anual()<<endl; 
+            cin >> anio;
+            reportegasto.reportarAnual(reporte,anio);
+            cout << "Gastos en " << anio << " anos: " << reportegasto.getReporteGastoAnual()<<endl; 
             cout << "--------------------------------------" << endl;
             reportarGasto();
         }
-        if (g_rp == 4)
+        if (opcionGasto == 4)
         {
             cout << "Regresando al menu..." << endl;
             cout << "--------------------------------------" << endl;
-            menu_rep();
+            menuRep();
         }
-    } while (g_rp == 1 || g_rp == 2 || g_rp == 3 || g_rp == 4);
-    if (g_rp != 1 && g_rp != 2 && g_rp != 3 && g_rp != 4)
+    } while (opcionGasto == 1 || opcionGasto == 2 || opcionGasto == 3 || opcionGasto == 4);
+    if (opcionGasto != 1 && opcionGasto != 2 && opcionGasto != 3 && opcionGasto != 4)
     {
         cout << "Esa no es una opcion valida, escoge bien" << endl;
         cout << "--------------------------------------" << endl;
@@ -269,53 +271,53 @@ void reportarGasto()
 
 void reportarVenta()
 {
-    int v_rp;
+    int opcionVenta;
     cout << "Que tipo de venta quieres hacer reporte: " << endl;
     cout << "1 - Venta diaria" << endl;
     cout << "2 - Venta mensual" << endl;
     cout << "3 - Venta anual" << endl;
     cout << "4 - Regresar" << endl;
-    cin >> v_rp;
+    cin >> opcionVenta;
     do
     {
-        if (v_rp == 1)
+        if (opcionVenta == 1)
         {
-            int d;
+            int dia;
             cout << "A cuantos dias a futuro quieres ver: " << endl;
-            cin >> d;
-            reporteventa.reportar_dias(reporte,d);
-            cout << "Ventas en " << d << " dias: " << reporteventa.getreporteVenta_dias() << endl;
+            cin >> dia;
+            reporteventa.reportarDias(reporte,dia);
+            cout << "Ventas en " << dia << " dias: " << reporteventa.getReporteVentaDias() << endl;
             cout << "--------------------------------------" << endl;
             reportarVenta();
         }
-        if (v_rp == 2)
+        if (opcionVenta == 2)
         {
-            int m;
+            int mes;
             cout << "A cuantos meses a futuro quieres ver: " << endl;
-            cin >> m;
-            reporteventa.reportar_mes(reporte,m);
-            cout << "Ventas en " << m << " meses: " << reporteventa.getreporteVenta_mes() << endl;
+            cin >> mes;
+            reporteventa.reportarMes(reporte,mes);
+            cout << "Ventas en " << mes << " meses: " << reporteventa.getReporteVentaMes() << endl;
             cout << "--------------------------------------" << endl;
             reportarVenta();
         }
-        if (v_rp == 3)
+        if (opcionVenta == 3)
         {
-            int a;
+            int anio;
             cout << "A cuantos años a futuro quieres ver: " << endl;
-            cin >> a;
-            reporteventa.reportar_anual(reporte,a);
-            cout << "Ventas en " << a << " años: " << reporteventa.getreporteVenta_anual() << endl;
+            cin >> anio;
+            reporteventa.reportarAnual(reporte,anio);
+            cout << "Ventas en " << anio << " años: " << reporteventa.getReporteVentaAnual() << endl;
             cout << "--------------------------------------" << endl;
             reportarVenta();
         }
-        if (v_rp == 4)
+        if (opcionVenta == 4)
         {
             cout << "Regresando al menu..." << endl;
             cout << "--------------------------------------" << endl;
-            menu_rep();
+            menuRep();
         }
-    } while (v_rp == 1 || v_rp == 2 || v_rp == 3 || v_rp == 4);
-    if (v_rp != 1 && v_rp != 2 && v_rp != 3 && v_rp != 4)
+    } while (opcionVenta == 1 || opcionVenta == 2 || opcionVenta == 3 || opcionVenta == 4);
+    if (opcionVenta != 1 && opcionVenta != 2 && opcionVenta != 3 && opcionVenta != 4)
     {
         cout << "Esa no es una opcion valida, escoge bien" << endl;
         cout << "--------------------------------------" << endl;
@@ -323,301 +325,301 @@ void reportarVenta()
     }
 }
 
-void agregar_inv()
+void agregarInv()
 {
-    int op_ag;
+    int opcionAgregar;
     cout << ("Selecciona el inventario al que le quieres agregar") << endl;
     cout << ("1 - Frutas") << endl;
     cout << ("2 - Vegetales") << endl;
     cout << ("3 - Carnes") << endl;
     cout << ("4 - Electronicos") << endl;
-    cin >> op_ag;
+    cin >> opcionAgregar;
     cout << "--------------------------------------" << endl;
     do
     {
-        if (op_ag == 1)
+        if (opcionAgregar == 1)
         {
             inventario.agregarFruta();
             cout << "--------------------------------------" << endl;
-            menu_inv();
+            menuInv();
         }
-        if (op_ag == 2)
+        if (opcionAgregar == 2)
         {
             inventario.agregarVegetal();
             cout << "--------------------------------------" << endl;
-            menu_inv();
+            menuInv();
         }
-        if (op_ag == 3)
+        if (opcionAgregar == 3)
         {
             inventario.agregarCarne();
             cout << "--------------------------------------" << endl;
-            menu_inv();
+            menuInv();
         }
-        if (op_ag == 4)
+        if (opcionAgregar == 4)
         {
             inventario.agregarElectro();
             cout << "--------------------------------------" << endl;
-            menu_inv();
+            menuInv();
         }
-    } while (op_ag == 1 || op_ag == 2 || op_ag == 3 || op_ag == 4);
+    } while (opcionAgregar == 1 || opcionAgregar == 2 || opcionAgregar == 3 || opcionAgregar == 4);
 
-    if (op_ag != 1 && op_ag != 2 && op_ag != 3 && op_ag != 4)
+    if (opcionAgregar != 1 && opcionAgregar != 2 && opcionAgregar != 3 && opcionAgregar != 4)
     {
         cout << "Esa no es una opcion valida, escoge bien" << endl;
         cout << "--------------------------------------" << endl;
-        agregar_inv();
+        agregarInv();
     }
 }
 
-void quitar_inv()
+void quitarInv()
 {
-    int op_q;
+    int opcionQuitar;
     cout << ("Selecciona el inventario al que le quieres quitar") << endl;
     cout << ("1 - Frutas") << endl;
     cout << ("2 - Vegetales") << endl;
     cout << ("3 - Carnes") << endl;
     cout << ("4 - Electronicos") << endl;
-    cin >> op_q;
+    cin >> opcionQuitar;
     cout << "--------------------------------------" << endl;
     do
     {
-        if (op_q == 1)
+        if (opcionQuitar == 1)
         {
             inventario.quitarFruta();
             cout << "--------------------------------------" << endl;
-            menu_inv();
+            menuInv();
         }
-        if (op_q == 2)
+        if (opcionQuitar == 2)
         {
             inventario.quitarVegetal();
             cout << "--------------------------------------" << endl;
-            menu_inv();
+            menuInv();
         }
-        if (op_q == 3)
+        if (opcionQuitar == 3)
         {
             inventario.quitarCarne();
             cout << "--------------------------------------" << endl;
-            menu_inv();
+            menuInv();
         }
-        if (op_q == 4)
+        if (opcionQuitar == 4)
         {
             inventario.quitarElectro();
             cout << "--------------------------------------" << endl;
-            menu_inv();
+            menuInv();
         }
-    } while (op_q == 1 || op_q == 2 || op_q == 3 || op_q == 4);
+    } while (opcionQuitar == 1 || opcionQuitar == 2 || opcionQuitar == 3 || opcionQuitar == 4);
 
-    if (op_q != 1 && op_q != 2 && op_q != 3 && op_q != 4)
+    if (opcionQuitar != 1 && opcionQuitar != 2 && opcionQuitar != 3 && opcionQuitar != 4)
     {
         cout << "Esa no es una opcion valida, escoge bien" << endl;
         cout << "--------------------------------------" << endl;
-        quitar_inv();
+        quitarInv();
     }
 }
 
-void menu_ventas()
+void menuVentas()
 {
-    int op_v;
+    int opcionVenta;
     cout << "Que tipo de ventas quieres registrar" << endl;
     cout << "1 - Venta diaria" << endl;
     cout << "2 - Venta mensual" << endl;
     cout << "3 - Venta anual" << endl;
     cout << "4 - Regresar" << endl;
-    cin >> op_v;
+    cin >> opcionVenta;
     do
     {
-        if (op_v == 1)
+        if (opcionVenta == 1)
         {
-            float v_d;
+            float ventaDia;
             cout << "Registra las ventas diarias: " << endl;
-            cin >> v_d;
-            venta.setVentas_dia(v_d);
+            cin >> ventaDia;
+            venta.setVentasDia(ventaDia);
             cout << "--------------------------------------" << endl;
-            menu_ventas();
+            menuVentas();
         }
-        else if (op_v == 2)
+        else if (opcionVenta == 2)
         {
-            float v_m;
+            float ventaMes;
             cout << "Registra las ventas mensuales: " << endl;
-            cin >> v_m;
-            venta.setVentas_mes(v_m);
+            cin >> ventaMes;
+            venta.setVentasMes(ventaMes);
             cout << "--------------------------------------" << endl;
-            menu_ventas();
+            menuVentas();
         }
-        else if (op_v == 3)
+        else if (opcionVenta == 3)
         {
-            float v_a;
+            float ventaAnual;
             cout << "Registra las ventas anuales: " << endl;
-            cin >> v_a;
-            venta.setVentas_anual(v_a);
+            cin >> ventaAnual;
+            venta.setVentasAnual(ventaAnual);
             cout << "--------------------------------------" << endl;
-            menu_ventas();
+            menuVentas();
         }
-        else if (op_v == 4)
+        else if (opcionVenta == 4)
         {
             cout << "Regresando al menu..." << endl;
             cout << "--------------------------------------" << endl;
-            reporteventa.agregar_venta(venta);
+            reporteventa.agregarVenta(venta);
             menu();
         }
-    } while (op_v == 1 || op_v == 2 || op_v == 3 || op_v == 4);
-    if (op_v != 1 && op_v != 2 && op_v != 3 && op_v != 4)
+    } while (opcionVenta == 1 || opcionVenta == 2 || opcionVenta == 3 || opcionVenta == 4);
+    if (opcionVenta != 1 && opcionVenta != 2 && opcionVenta != 3 && opcionVenta != 4)
     {
         cout << "Esa no es una opcion valida, escoge bien" << endl;
         cout << endl;
-        menu_ventas();
+        menuVentas();
     }
 }
 
-void menu_gastos()
+void menuGastos()
 {
-    int op_g;
+    int opcionGastos;
     cout << "Que tipo de gasto quieres registrar" << endl;
     cout << "1 - Gasto diario" << endl;
     cout << "2 - Gasto mensual" << endl;
     cout << "3 - Gasto anual" << endl;
     cout << "4 - Regresar" << endl;
-    cin >> op_g;
+    cin >> opcionGastos;
     do
     {
-        if (op_g == 1)
+        if (opcionGastos == 1)
         {
-            float g_d;
+            float gastoDia;
             cout << "Registra los gastos diarios: " << endl;
-            cin >> g_d;
-            gasto.setGastos_dia(g_d);
+            cin >> gastoDia;
+            gasto.setGastosDia(gastoDia);
             cout << "--------------------------------------" << endl;
-            menu_gastos();
+            menuGastos();
         }
-        if (op_g == 2)
+        if (opcionGastos == 2)
         {
-            float g_m;
+            float gastoMes;
             cout << "Registra los gastos mensuales: " << endl;
-            cin >> g_m;
-            gasto.setGastos_mes(g_m);
+            cin >> gastoMes;
+            gasto.setGastosMes(gastoMes);
             cout << "--------------------------------------" << endl;
-            menu_gastos();
+            menuGastos();
         }
-        if (op_g == 3)
+        if (opcionGastos == 3)
         {
-            float g_a;
+            float gastoAnual;
             cout << "Registra los gastos anuales: " << endl;
-            cin >> g_a;
-            gasto.setGastos_anual(g_a);
+            cin >> gastoAnual;
+            gasto.setGastosAnual(gastoAnual);
             cout << "--------------------------------------" << endl;
-            menu_gastos();
+            menuGastos();
         }
-        if (op_g == 4)
+        if (opcionGastos == 4)
         {
             cout << "Regresando al menu..." << endl;
             cout << "--------------------------------------" << endl;
-            reportegasto.agregar_gasto(gasto);
+            reportegasto.agregarGasto(gasto);
             menu();
 
         }
-    } while (op_g == 1 || op_g == 2 || op_g == 3 || op_g == 4);
-    if (op_g != 1 && op_g != 2 && op_g != 3 && op_g != 4)
+    } while (opcionGastos == 1 || opcionGastos == 2 || opcionGastos == 3 || opcionGastos == 4);
+    if (opcionGastos != 1 && opcionGastos != 2 && opcionGastos != 3 && opcionGastos != 4)
     {
         cout << "Esa no es una opcion valida, escoge bien" << endl;
         cout << "--------------------------------------" << endl;
-        menu_gastos();
+        menuGastos();
     }
 }
 
-void menu_pagos()
+void menuPagos()
 {
-    int op_p;
+    int opcionPago;
     cout << "Que tipo de pago quieres registrar" << endl;
     cout << "1 - Pago empleados" << endl;
     cout << "2 - Pago luz" << endl;
     cout << "3 - Pago agua" << endl;
     cout << "4 - Regresar" << endl;
-    cin >> op_p;
+    cin >> opcionPago;
     do
     {
-        if (op_p == 1)
+        if (opcionPago == 1)
         {
-            float p_e;
+            float pagoEmpleado;
             cout << "Registra los pagos a empleados (por semana): " << endl;
-            cin >> p_e;
-            pago.setPagos_empleado(p_e);
+            cin >> pagoEmpleado;
+            pago.setPagosEmpleado(pagoEmpleado);
             cout << "--------------------------------------" << endl;
-            menu_pagos();
+            menuPagos();
         }
-        if (op_p == 2)
+        if (opcionPago == 2)
         {
-            float p_l;
+            float pagoLuz;
             cout << "Registra los pagos de luz (por semana): " << endl;
-            cin >> p_l;
-            pago.setPagos_luz(p_l);
+            cin >> pagoLuz;
+            pago.setPagosLuz(pagoLuz);
             cout << "--------------------------------------" << endl;
-            menu_pagos();
+            menuPagos();
         }
-        if (op_p == 3)
+        if (opcionPago == 3)
         {
-            float p_a;
+            float pagoAgua;
             cout << "Registra los pagos de agua (por semana): " << endl;
-            cin >> p_a;
-            pago.setPagos_agua(p_a);
+            cin >> pagoAgua;
+            pago.setPagosAgua(pagoAgua);
             cout << "--------------------------------------" << endl;
-            menu_pagos();
+            menuPagos();
         }
-        if (op_p == 4)
+        if (opcionPago == 4)
         {
             cout << "Regresando al menu..." << endl;
             cout << "--------------------------------------" << endl;
-            reportepago.agregar_pago(pago);
+            reportepago.agregarPago(pago);
             menu();
         }
-    } while (op_p == 1 || op_p == 2 || op_p == 3 || op_p == 4);
-    if (op_p != 1 && op_p != 2 && op_p != 3 && op_p != 4)
+    } while (opcionPago == 1 || opcionPago == 2 || opcionPago == 3 || opcionPago == 4);
+    if (opcionPago != 1 && opcionPago != 2 && opcionPago != 3 && opcionPago != 4)
     {
         cout << "Esa no es una opcion valida, escoge bien" << endl;
         cout << "--------------------------------------" << endl;
-        menu_pagos();
+        menuPagos();
     }
 }
 
-void menu_inv()
+void menuInv()
 {
-    int op_inv;
+    int opcionInv;
     cout<<("Selecciona que deseas hacer") << endl;
     cout << ("1 - Agregar") << endl;
     cout << ("2 - Quitar") << endl;
     cout << ("3 - Regresar") << endl;
-    cin >> op_inv;
+    cin >> opcionInv;
     do
     {
-        if (op_inv == 1)
+        if (opcionInv == 1)
         {
-            agregar_inv();
+            agregarInv();
             cout << "--------------------------------------" << endl;
-            menu_inv();
+            menuInv();
         }
-        if (op_inv == 2)
+        if (opcionInv == 2)
         {
-            quitar_inv();
+            quitarInv();
             cout << "--------------------------------------" << endl;
-            menu_inv();
+            menuInv();
         }
-        if (op_inv == 3)
+        if (opcionInv == 3)
         {
             cout << "Regresando al menu..." << endl;
             cout << "--------------------------------------" << endl;
             menu();
         }
-    } while (op_inv == 1 || op_inv == 2 || op_inv == 3);
-    if (op_inv != 1 && op_inv != 2 && op_inv != 3)
+    } while (opcionInv == 1 || opcionInv == 2 || opcionInv == 3);
+    if (opcionInv != 1 && opcionInv != 2 && opcionInv != 3)
     {
         cout << "Esa no es una opcion valida, escoge bien" << endl;
         cout << "--------------------------------------" << endl;
-        menu_inv();
+        menuInv();
     }
 }
 
-void menu_rep()
+void menuRep()
 {
-    int op_rep;
+    int opReporte;
     cout << ("Selecciona el reporte que deseas generar") << endl;
     cout << ("1 - Reporte Ventas") << endl;
     cout << ("2 - Reporte Gastos") << endl;
@@ -625,53 +627,53 @@ void menu_rep()
     cout << ("4 - Reporte Inventario") << endl;
     cout << ("5 - Reporte General") << endl;
     cout << ("6 - Regresar") << endl;
-    cin >> op_rep;
+    cin >> opReporte;
     do
     {
-        if (op_rep == 1)
+        if (opReporte == 1)
         {
             
             reportarVenta();
             cout << "--------------------------------------" << endl;
         }
-        if (op_rep == 2)
+        if (opReporte == 2)
         {
             reportarGasto();
             cout << "--------------------------------------" << endl;
         }
-        if (op_rep == 3)
+        if (opReporte == 3)
         {
             reportarPago();
             cout << "--------------------------------------" << endl;
         }
-        if (op_rep == 4)
+        if (opReporte == 4)
         {
             reportarInv();
             cout << "--------------------------------------" << endl;
         }
-        if (op_rep == 5)
+        if (opReporte == 5)
         {
             reportarGen();
             cout << "--------------------------------------" << endl;
         }
-        if (op_rep == 6)
+        if (opReporte == 6)
         {
             cout << "Regresando al menu..." << endl;
             cout << "--------------------------------------" << endl;
             menu();
         }
-    } while (op_rep == 1 || op_rep == 2 || op_rep == 3 || op_rep == 4 || op_rep == 5 || op_rep == 6);
-    if (op_rep != 1 && op_rep != 2 && op_rep != 3 && op_rep != 4 && op_rep != 5 && op_rep!=6)
+    } while (opReporte == 1 || opReporte == 2 || opReporte == 3 || opReporte == 4 || opReporte == 5 || opReporte == 6);
+    if (opReporte != 1 && opReporte != 2 && opReporte != 3 && opReporte != 4 && opReporte != 5 && opReporte !=6)
     {
         cout << "Esa no es una opcion valida, escoge bien" << endl;
         cout << "--------------------------------------" << endl;
-        menu_rep();
+        menuRep();
     }
 }
 
 void menu()
 {
-    int opc;
+    int opcionMenu;
     cout << ("Selecciona que deseas hacer") << endl;
     cout << ("1 - Registrar ventas") << endl;
     cout << ("2 - Registrar gastos") << endl;
@@ -679,40 +681,40 @@ void menu()
     cout << ("4 - Registrar pagos") << endl;
     cout << ("5 - Generar reporte") << endl;
     cout << ("6 - Salir") << endl;
-    cin >> opc;
+    cin >> opcionMenu;
     do
     {
-        if (opc == 1)
+        if (opcionMenu == 1)
         {
             cout << "--------------------------------------" << endl;
-            menu_ventas();
+            menuVentas();
         }
-        if (opc == 2)
+        if (opcionMenu == 2)
         {
             cout << "--------------------------------------" << endl;
-            menu_gastos();
+            menuGastos();
         }
-        if (opc == 3)
+        if (opcionMenu == 3)
         {
             cout << "--------------------------------------" << endl;
-            menu_inv();
+            menuInv();
         }
-        if (opc == 4)
+        if (opcionMenu == 4)
         {
             cout << "--------------------------------------" << endl;
-            menu_pagos();
+            menuPagos();
         }
-        if (opc == 5)
+        if (opcionMenu == 5)
         {
             cout << "--------------------------------------" << endl;
-            menu_rep();
+            menuRep();
         }
-        if (opc == 6)
+        if (opcionMenu == 6)
         {
             break;
         }
-    } while (opc == 1 || opc == 2 || opc == 3 || opc == 4 || opc == 5 || opc == 6);
-    if (opc != 1 && opc != 2 && opc != 3 && opc != 4 && opc != 5 && opc != 6)
+    } while (opcionMenu == 1 || opcionMenu == 2 || opcionMenu == 3 || opcionMenu == 4 || opcionMenu == 5 || opcionMenu == 6);
+    if (opcionMenu != 1 && opcionMenu != 2 && opcionMenu != 3 && opcionMenu != 4 && opcionMenu != 5 && opcionMenu != 6)
     {
         cout << "Esa no es una opcion valida, escoge bien" << endl;
         cout << "--------------------------------------" << endl;

@@ -9,7 +9,7 @@ public:
 	float prediccion(float, int);
 };
 
-float Reporte::prediccion(float v, int t)
+float Reporte::prediccion(float dinero, int tiempo)
 {
-	return v * t;
+	return dinero * tiempo;
 }

@@ -5,47 +5,47 @@ using namespace std;
 class Venta
 {
 public:
-    float getVentas_dia();
-    void setVentas_dia(float);
-    float getVentas_mes();
-    void setVentas_mes(float);
-    float getVentas_anual();
-    void setVentas_anual(float);
+    float getVentasDia();
+    void setVentasDia(float);
+    float getVentasMes();
+    void setVentasMes(float);
+    float getVentasAnual();
+    void setVentasAnual(float);
 
 private:
-    float ventas_dia;
-    float ventas_mes;
-    float ventas_anual;
+    float ventasDia;
+    float ventasMes;
+    float ventasAnual;
 }; 
 
-void Venta::setVentas_dia(float v_d)
+void Venta::setVentasDia(float venta_Dia)
 {
-    ventas_dia = v_d;
+    ventasDia = venta_Dia;
 }
 
-float Venta::getVentas_dia()
+float Venta::getVentasDia()
 {
-    return ventas_dia;
+    return ventasDia;
 }
 
-void Venta::setVentas_mes(float v_m)
+void Venta::setVentasMes(float venta_Mes)
 {
-    ventas_mes = v_m;
+    ventasMes = venta_Mes;
 }
 
-float Venta::getVentas_mes()
+float Venta::getVentasMes()
 {
-    return ventas_mes;
+    return ventasMes;
 }
 
-void Venta::setVentas_anual(float v_a)
+void Venta::setVentasAnual(float venta_Anual)
 {
-    ventas_anual = v_a;
+    ventasAnual = venta_Anual;
 }
 
-float Venta::getVentas_anual()
+float Venta::getVentasAnual()
 {
-    return ventas_anual;
+    return ventasAnual;
 }
 
 

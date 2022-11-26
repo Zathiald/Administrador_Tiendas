@@ -17,239 +17,241 @@ public:
     void quitarCarne();
     void agregarElectro();
     void quitarElectro();
-    void settam_f(int);
-    void settam_v(int);
-    void settam_c(int);
-    void settam_e(int);
-    void printfruta();
-    void printvegetal();
-    void printcarne();
-    void printelectro();
-    int gettam_f();
-    int gettam_v();
-    int gettam_c();
-    int gettam_e();
+    void setTamFruta(int);
+    void setTamVegetal(int);
+    void setTamCarne(int);
+    void setTamElectro(int);
+    void printFruta();
+    void printVegetal();
+    void printCarne();
+    void printElectro();
+    int getTamFruta();
+    int getTamVegetal();
+    int getTamCarne();
+    int getTamElectro();
     
 private:
-    int tam_f = 0;
-    int tam_v = 0;
-    int tam_c = 0;
-    int tam_e = 0;
-    string inv_Fruta[50];
-    string inv_Vegetal[50];
-    string inv_Carne[50];
-    string inv_Electro[50];
+    int tamFruta = 0;
+    int tamVegetal= 0;
+    int tamCarne = 0;
+    int tamElectro = 0;
+    string invFruta[50];
+    string invVegetal[50];
+    string invCarne[50];
+    string invElectro[50];
 };
 
 
-void Inventario::printfruta()
+void Inventario::printFruta()
 {
-    for (int x = 0; x < tam_f; x++)
+    for (int x = 0; x < tamFruta; x++)
     {
         cout << "Index: " << x << endl;
-        cout << " Productos: " << inv_Fruta[x] << endl;
+        cout << " Productos: " << invFruta[x] << endl;
     };
 };
 
-void Inventario::printvegetal()
+void Inventario::printVegetal()
 {
-    for (int x = 0; x < tam_v; x++)
+    for (int x = 0; x < tamVegetal; x++)
     {
         cout << "Index: " << x << endl;
-        cout << " Productos: " << inv_Vegetal[x] << endl;
+        cout << " Productos: " << invVegetal[x] << endl;
     };
 };
 
-void Inventario::printcarne()
+void Inventario::printCarne()
 {
-    for (int x = 0; x < tam_c; x++)
+    for (int x = 0; x < tamCarne; x++)
     {
         cout << "Index: " << x << endl;
-        cout << " Productos: " << inv_Carne[x] << endl;
+        cout << " Productos: " << invCarne[x] << endl;
     };
 };
 
-void Inventario::printelectro()
+void Inventario::printElectro()
 {
-    for (int x = 0; x < tam_e; x++)
+    for (int x = 0; x < tamElectro; x++)
     {
         cout << "Index: " << x << endl;
-        cout << " Productos: " << inv_Electro[x] << endl;
+        cout << " Productos: " << invElectro[x] << endl;
     };
 };
 
-
-
-void Inventario::settam_f(int t)
+void Inventario::setTamFruta(int tam)
 {
-    tam_f = t;
+    tamFruta = tam;
 }
-void Inventario::settam_v(int t)
+void Inventario::setTamVegetal(int tam)
 {
-    tam_v = t;
+    tamVegetal = tam;
 }
-void Inventario::settam_c(int t)
+void Inventario::setTamCarne(int tam)
 {
-    tam_c = t;
+    tamCarne = tam;
 }
-void Inventario::settam_e(int t)
+void Inventario::setTamElectro(int tam)
 {
-    tam_e = t;
+    tamElectro = tam;
 }
 
-int Inventario::gettam_f()
+int Inventario::getTamFruta()
 {
-    return tam_f;
+    return tamFruta;
 }
 
-int Inventario::gettam_v()
+int Inventario::getTamVegetal()
 {
-    return tam_v;
+    return tamVegetal;
 }
 
-int Inventario::gettam_c()
+int Inventario::getTamCarne()
 {
-    return tam_c;
+    return tamCarne;
 }
 
-int Inventario::gettam_e()
+int Inventario::getTamElectro()
 {
-    return tam_e;
+    return tamElectro;
 }
 
 void Inventario::agregarFruta()
 {
-    string fruta;
-    int nueva_fruta;
+    string Fruta;
+    int nuevaFruta;
     do
     {
         cout << "Que fruta quieres agregar a la lista: ";
-        cin >> fruta;
-        inv_Fruta[gettam_f()] = fruta;
-        int t = gettam_f() + 1;
-        settam_f(t);
+        cin >> Fruta;
+        invFruta[getTamFruta()] = Fruta;
+        int tam = getTamFruta() + 1;
+        setTamFruta(tam);
         cout << "Quieres agregar otra fruta?" << endl;
         cout << "1 - Si" << endl;
         cout << "2 - No" << endl;
-        cin >> nueva_fruta;
-        if (nueva_fruta == 2)
+        cin >> nuevaFruta;
+        if (nuevaFruta == 2)
         {
             cout << "--------------------------------------" << endl;
         }
-    } while (nueva_fruta == 1);
+    } while (nuevaFruta == 1);
 } 
 
 void Inventario::quitarFruta()
 {
-    int fruta_x;
+    int numQuitar;
+    printFruta();
     cout << endl;
     cout << "Que fruta quieres quitar de la lista,escoge su numero: ";
-    cin >> fruta_x;
-    inv_Fruta[fruta_x] = {};
-    int t = gettam_f() - 1;
-    settam_f(t);
+    cin >> numQuitar;
+    invFruta[numQuitar] = {};
+    int tam = getTamFruta() - 1;
+    setTamFruta(tam);
     cout << "--------------------------------------" << endl;
 }
 
 void Inventario::agregarVegetal()
 {
-    string vegetal;
-    int nuevo_vegetal;
+    string Vegetal;
+    int nuevoVegetal;
     do
     {
         cout << "Que vegetal quieres agregar a la lista: ";
-        cin >> vegetal;
-        inv_Vegetal[gettam_v()] = vegetal;
-        int t = gettam_v() + 1;
-        settam_v(t);
+        cin >> Vegetal;
+        invVegetal[getTamVegetal()] = Vegetal;
+        int tam = getTamVegetal() + 1;
+        setTamVegetal(tam);
         cout << "Quieres agregar otro vegetal?" << endl;
         cout << "1 - Si" << endl;
         cout << "2 - No" << endl;
-        cin >> nuevo_vegetal;
-        if (nuevo_vegetal == 2)
+        cin >> nuevoVegetal;
+        if (nuevoVegetal == 2)
         {
             cout << "--------------------------------------" << endl;
         }
-    } while (nuevo_vegetal == 1);
+    } while (nuevoVegetal == 1);
 }
 
 void Inventario::quitarVegetal()
 {
-    int vegetal_x;
+    int numQuitar;
+    printVegetal();
     cout << endl;
     cout << "Que vegetal quieres quitar de la lista,escoge su numero: ";
-    cin >> vegetal_x;
-    inv_Vegetal[vegetal_x] = {};
-    int t = gettam_v() - 1;
-    settam_v(t);
+    cin >> numQuitar;
+    invVegetal[numQuitar] = {};
+    int t = getTamVegetal() - 1;
+    setTamVegetal(t);
     cout << "--------------------------------------" << endl;
 }
 
 void Inventario::agregarCarne()
 {
-    string carne;
-    int nuevo_carne;
+    string Carne;
+    int nuevoCarne;
     do
     {
         cout << "Que carne quieres agregar a la lista: ";
-        cin >> carne;
-        inv_Carne[gettam_c()] = carne;
-        int t = gettam_c() + 1;
-        settam_c(t);
+        cin >> Carne;
+        invCarne[getTamCarne()] = Carne;
+        int tam = getTamCarne() + 1;
+        setTamCarne(tam);
         cout << "Quieres agregar otra carne?" << endl;
         cout << "1 - Si" << endl;
         cout << "2 - No" << endl;
-        cin >> nuevo_carne;
-        if (nuevo_carne == 2)
+        cin >> nuevoCarne;
+        if (nuevoCarne == 2)
         {
             cout << "--------------------------------------" << endl;
         }
-    } while (nuevo_carne == 1);
+    } while (nuevoCarne == 1);
 }
 
 void Inventario::quitarCarne()
 {
-    int carne_x;
+    int numQuitar;
+    printCarne();
     cout << endl;
     cout << "Que carne quieres quitar de la lista,escoge su numero: ";
-    cin >> carne_x;
-    inv_Carne[carne_x] = {};
-    int t = gettam_c() - 1;
-    settam_c(t);
+    cin >> numQuitar;
+    invCarne[numQuitar] = {};
+    int tam = getTamCarne() - 1;
+    setTamCarne(tam);
     cout << "--------------------------------------" << endl;
 }
 
 void Inventario::agregarElectro()
 {
-    string electro;
-    int nuevo_electro;
+    string Electro;
+    int nuevoElectro;
     do
     {
         cout << "Que electronico quieres agregar a la lista: ";
-        cin >> electro;
-        inv_Electro[gettam_e()] = electro;
-        int t = gettam_e() + 1;
-        settam_e(t);
+        cin >> Electro;
+        invElectro[getTamElectro()] = Electro;
+        int tam = getTamElectro() + 1;
+        setTamElectro(tam);
         cout << "Quieres agregar otro electronico?" << endl;
         cout << "1 - Si" << endl;
         cout << "2 - No" << endl;
-        cin >> nuevo_electro;
-        if (nuevo_electro == 2)
+        cin >> nuevoElectro;
+        if (nuevoElectro == 2)
         {
             cout << "--------------------------------------" << endl;
         }
-    } while (nuevo_electro == 1);
+    } while (nuevoElectro == 1);
 }
 
 void Inventario::quitarElectro()
 {
-    int electro_x;
+    int numQuitar;
+    printElectro();
     cout << endl;
     cout << "Que electronico quieres quitar de la lista,escoge su numero: ";
-    cin >> electro_x;
-    inv_Electro[electro_x] = {};
-    int t = gettam_e() - 1;
-    settam_e(t);
+    cin >> numQuitar;
+    invElectro[numQuitar] = {};
+    int tam = getTamElectro() - 1;
+    setTamElectro(tam);
     cout << "--------------------------------------" << endl;
 }
 

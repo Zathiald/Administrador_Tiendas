@@ -5,73 +5,73 @@ using namespace std;
 class Reporte_Pago : public Reporte
 {
 public:
-	float getreportePago_dias();
-	void setreportePago_dias(float);
-	float getreportePago_mes();
-	void setreportePago_mes(float);
-	float getreportePago_anual();
-	void setreportePago_anual(float);
-	void reportar_dias(Reporte,float,int);
-	void reportar_mes(Reporte,float,int);
-	void reportar_anual(Reporte,float,int);
-	void agregar_pago(Pago);
+	float getReportePagoDias();
+	void setReportePagoDias(float);
+	float getReportePagoMes();
+	void setReportePagoMes(float);
+	float getReportePagoAnual();
+	void setReportePagoAnual(float);
+	void reportarDias(Reporte,float,int);
+	void reportarMes(Reporte,float,int);
+	void reportarAnual(Reporte,float,int);
+	void agregarPago(Pago);
 
 private:
-	float reportePago_dias;
-	float reportePago_mes;
-	float reportePago_anual;
+	float reportePagoDias;
+	float reportePagoMes;
+	float reportePagoAnual;
 	Pago pago;
 };
 
-float Reporte_Pago::getreportePago_dias()
+float Reporte_Pago::getReportePagoDias()
 {
-	return reportePago_dias;
+	return reportePagoDias;
 };
 
-void Reporte_Pago::setreportePago_dias(float p)
+void Reporte_Pago::setReportePagoDias(float pago)
 {
-	reportePago_dias = p;
+	reportePagoDias = pago;
 };
 
-float Reporte_Pago::getreportePago_mes()
+float Reporte_Pago::getReportePagoMes()
 {
-	return reportePago_mes;
+	return reportePagoMes;
 };
 
-void Reporte_Pago::setreportePago_mes(float p)
+void Reporte_Pago::setReportePagoMes(float pago)
 {
-	reportePago_mes = p;
+	reportePagoMes = pago;
 };
 
-float Reporte_Pago::getreportePago_anual()
+float Reporte_Pago::getReportePagoAnual()
 {
-	return reportePago_anual;
+	return reportePagoAnual;
 };
 
-void Reporte_Pago::setreportePago_anual(float v)
+void Reporte_Pago::setReportePagoAnual(float pago)
 {
-	reportePago_anual = v;
+	reportePagoAnual = pago;
 };
 
-void Reporte_Pago::reportar_dias(Reporte reporte,float p,int d)
+void Reporte_Pago::reportarDias(Reporte reporte,float pago,int dia)
 {
-	float p_d = reporte.prediccion(p, d);
-	setreportePago_dias(p_d);
+	float pagoDia = reporte.prediccion(pago, dia);
+	setReportePagoDias(pagoDia);
 };
 
-void Reporte_Pago::reportar_mes(Reporte reporte,float p,int m)
+void Reporte_Pago::reportarMes(Reporte reporte,float pago,int mes)
 {
-	float p_m = reporte.prediccion(p, m);
-	setreportePago_mes(p_m);
+	float pagoMes = reporte.prediccion(pago, mes);
+	setReportePagoMes(pagoMes);
 };
 
-void Reporte_Pago::reportar_anual(Reporte reporte,float p,int a)
+void Reporte_Pago::reportarAnual(Reporte reporte,float pago,int anual)
 {
-	float p_a = reporte.prediccion(p, a);
-	setreportePago_anual(p_a);
+	float pagoAnual = reporte.prediccion(pago,anual);
+	setReportePagoAnual(pagoAnual);
 };
 
-void Reporte_Pago::agregar_pago(Pago pag)
+void Reporte_Pago::agregarPago(Pago pag)
 {
 	pago = pag;
 };

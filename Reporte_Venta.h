@@ -5,73 +5,73 @@ using namespace std;
 class Reporte_Venta : public Reporte
 {
 public:
-    float getreporteVenta_dias();
-    void setreporteVenta_dias(float);
-    float getreporteVenta_mes();
-    void setreporteVenta_mes(float);
-    float getreporteVenta_anual();
-    void setreporteVenta_anual(float);
-    void reportar_dias(Reporte,int);
-    void reportar_mes(Reporte,int);
-    void reportar_anual(Reporte,int);
-    void agregar_venta(Venta);
+    float getReporteVentaDias();
+    void setReporteVentaDias(float);
+    float getReporteVentaMes();
+    void setReporteVentaMes(float);
+    float getReporteVentaAnual();
+    void setReporteVentaAnual(float);
+    void reportarDias(Reporte,int);
+    void reportarMes(Reporte,int);
+    void reportarAnual(Reporte,int);
+    void agregarVenta(Venta);
 
 private:
-    float reporteVenta_dias;
-    float reporteVenta_mes;
-    float reporteVenta_anual;
+    float reporteVentaDias;
+    float reporteVentaMes;
+    float reporteVentaAnual;
     Venta venta;
 };
 
-float Reporte_Venta::getreporteVenta_dias()
+float Reporte_Venta::getReporteVentaDias()
 {
-    return reporteVenta_dias;
+    return reporteVentaDias;
 };
 
-void Reporte_Venta::setreporteVenta_dias(float v)
+void Reporte_Venta::setReporteVentaDias(float ventas)
 {
-    reporteVenta_dias = v;
+    reporteVentaDias = ventas;
 };
 
-float Reporte_Venta::getreporteVenta_mes()
+float Reporte_Venta::getReporteVentaMes()
 {
-    return reporteVenta_mes;
+    return reporteVentaMes;
 };
 
-void Reporte_Venta::setreporteVenta_mes(float v)
+void Reporte_Venta::setReporteVentaMes(float ventas)
 {
-    reporteVenta_mes = v;
+    reporteVentaMes = ventas;
 };
 
-float Reporte_Venta::getreporteVenta_anual()
+float Reporte_Venta::getReporteVentaAnual()
 {
-    return reporteVenta_anual;
+    return reporteVentaAnual;
 };
 
-void Reporte_Venta::setreporteVenta_anual(float v)
+void Reporte_Venta::setReporteVentaAnual(float ventas)
 {
-    reporteVenta_anual = v;
+    reporteVentaAnual = ventas;
 };
 
-void Reporte_Venta::reportar_dias(Reporte reporte,int d)
+void Reporte_Venta::reportarDias(Reporte reporte,int dia)
 {
-    float v_d = reporte.prediccion(venta.getVentas_dia(), d);
-    setreporteVenta_dias(v_d);
+    float v_d = reporte.prediccion(venta.getVentasDia(), dia);
+    setReporteVentaDias(v_d);
 };
 
-void Reporte_Venta::reportar_mes(Reporte reporte,int m)
+void Reporte_Venta::reportarMes(Reporte reporte,int mes)
 {
-    float v_m = reporte.prediccion(venta.getVentas_mes(), m);
-    setreporteVenta_mes(v_m);
+    float v_m = reporte.prediccion(venta.getVentasMes(), mes);
+    setReporteVentaMes(v_m);
 };
 
-void Reporte_Venta::reportar_anual(Reporte reporte,int a)
+void Reporte_Venta::reportarAnual(Reporte reporte,int anio)
 {
-    float v_a = reporte.prediccion(venta.getVentas_dia(), a);
-    setreporteVenta_anual(v_a);
+    float v_a = reporte.prediccion(venta.getVentasAnual(), anio);
+    setReporteVentaAnual(v_a);
 };
 
-void Reporte_Venta::agregar_venta(Venta vent)
+void Reporte_Venta::agregarVenta(Venta vent)
 {
     venta = vent;
 };
